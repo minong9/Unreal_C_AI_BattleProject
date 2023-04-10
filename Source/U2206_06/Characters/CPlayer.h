@@ -20,6 +20,12 @@ private:
 	UPROPERTY(VisibleDefaultsOnly)
 		class UCMovementComponent* Movement;
 
+	UPROPERTY(VisibleDefaultsOnly)
+		class UCStateComponent* State;
+
+	UPROPERTY(VisibleDefaultsOnly)
+		class UCMontagesComponent* Montages;
+
 public:
 	ACPlayer();
 

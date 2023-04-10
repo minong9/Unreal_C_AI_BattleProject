@@ -1,9 +1,12 @@
 #include "Characters/CPlayer.h"
 #include "Global.h"
+#include "CAnimInstance.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Component/CMovementComponent.h"
+#include "Component/CStateComponent.h"
+#include "Component/CMontagesComponent.h"
 #include "Components/InputComponent.h"
 
 ACPlayer::ACPlayer()
@@ -12,6 +15,9 @@ ACPlayer::ACPlayer()
 	CHelpers::CreateComponent<UCameraComponent>(this, &Camera, "Camera", SpringArm);
 
 	CHelpers::CreateActorComponent<UCMovementComponent>(this, &Movement, "Movement");
+	CHelpers::CreateActorComponent<UCStateComponent>(this, &State, "State");
+	CHelpers::CreateActorComponent<UCMontagesComponent>(this, &Montages, "Montages");
+
 
 	GetMesh()->SetRelativeLocation(FVector(0, 0, -90));
 	GetMesh()->SetRelativeRotation(FRotator(0, -90, 0));
@@ -19,6 +25,11 @@ ACPlayer::ACPlayer()
 	USkeletalMesh* mesh;
 	CHelpers::GetAsset<USkeletalMesh>(&mesh, "SkeletalMesh'/Game/Character/Mesh/SK_Mannequin.SK_Mannequin'");
 	GetMesh()->SetSkeletalMesh(mesh);
+
+	//애님인스턴스 애니메이션 블루프린트
+	TSubclassOf<UCAnimInstance> animInstance;
+	CHelpers::GetClass<UCAnimInstance>(&animInstance, "AnimBlueprint'/Game/ABP_Character.ABP_Character_C'");
+	GetMesh()->SetAnimClass(animInstance);
 
 	SpringArm->SetRelativeLocation(FVector(0, 0, 140));
 	SpringArm->SetRelativeRotation(FRotator(0, 90, 0));
@@ -34,7 +45,7 @@ void ACPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Movement->SetSpeed(ESpeedType::Walk);
+	Movement->SetSpeed(ESpeedType::Run);
 	Movement->DisableControlRotation();
 }
 
