@@ -5,7 +5,6 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Component/CMovementComponent.h"
-#include "Component/CStateComponent.h"
 #include "Component/CMontagesComponent.h"
 #include "Components/InputComponent.h"
 
@@ -41,12 +40,36 @@ ACPlayer::ACPlayer()
 	GetCharacterMovement()->RotationRate = FRotator(0, 720, 0);
 }
 
+void ACPlayer::OnStateTypeChanged(EStateType InPrevType, EStateType InNewType)
+{
+	switch (InNewType)
+	{
+		case EStateType::BackStep:BackStep(); break;
+	}
+}
+
+void ACPlayer::BackStep()
+{
+	Movement->EnableControlRotation();
+
+	Montages->PlayBackStepMode();
+}
+
+void ACPlayer::End_BackStep()
+{
+	Movement->DisableControlRotation();
+
+	State->SetIdleMode();
+}
+
 void ACPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 
 	Movement->SetSpeed(ESpeedType::Run);
 	Movement->DisableControlRotation();
+
+	State->OnStateTypeChanged.AddDynamic(this, &ACPlayer::OnStateTypeChanged);
 }
 
 void ACPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -60,5 +83,18 @@ void ACPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 	PlayerInputComponent->BindAction("Sprint", EInputEvent::IE_Pressed, Movement, &UCMovementComponent::OnSprint);
 	PlayerInputComponent->BindAction("Sprint", EInputEvent::IE_Released, Movement, &UCMovementComponent::OnRun);
+
+	PlayerInputComponent->BindAction("Avoid", EInputEvent::IE_Pressed, this, &ACPlayer::OnAvoid);
+
+}
+
+void ACPlayer::OnAvoid()
+{
+	CheckFalse(State->IsIdleMode());
+	CheckFalse(Movement->CanMove());
+
+	CheckTrue(InputComponent->GetAxisValue("MoveForward") >= 0.0f);
+
+	State->SetBackStepMode();
 }
 

@@ -1,11 +1,15 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "ICharacter.h"
 #include "GameFramework/Character.h"
+#include "Component/CStateComponent.h"
 #include "CPlayer.generated.h"
 
 UCLASS()
-class U2206_06_API ACPlayer : public ACharacter
+class U2206_06_API ACPlayer
+	: public ACharacter
+	, public IICharacter
 {
 	GENERATED_BODY()
 
@@ -35,4 +39,16 @@ protected:
 public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+private:
+	void OnAvoid();
+
+private:
+	UFUNCTION()
+		void OnStateTypeChanged(EStateType InPrevType, EStateType InNewType);
+
+private:
+	void BackStep();
+
+public:
+	void End_BackStep() override;
 };
