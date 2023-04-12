@@ -19,6 +19,17 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
+public:
+	UFUNCTION(BlueprintImplementableEvent)
+		void OnBeginEquip();
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void OnUnequip();
+
+protected:
+	UFUNCTION(BlueprintCallable, Category = "Attach")
+		void AttachTo(FName InSocketName);
+
 protected:
 	UPROPERTY(BlueprintReadOnly)
 		class ACharacter* OwnerCharacter;

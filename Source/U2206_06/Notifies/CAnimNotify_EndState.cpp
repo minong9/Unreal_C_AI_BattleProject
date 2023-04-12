@@ -15,9 +15,10 @@ void UCAnimNotify_EndState::Notify(USkeletalMeshComponent* MeshComp, UAnimSequen
 
 	IICharacter* character = Cast<IICharacter>(MeshComp->GetOwner());
 	CheckNull(character);
+	//character->End_BackStep();
 
 	switch (StateType)
 	{
-		case EStateType::BackStep: character->End_BackStep(); break;
+		case EStateType::BackStep:character->End_BackStep(); break;
 	}
 }
