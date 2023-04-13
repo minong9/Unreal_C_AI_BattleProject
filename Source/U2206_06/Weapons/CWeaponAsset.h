@@ -13,6 +13,7 @@ class U2206_06_API UCWeaponAsset : public UDataAsset
 public:
 	FORCEINLINE class ACAttachment* GetAttachment() { return Attachment; }
 	FORCEINLINE class UCEquipment* GetEquipment() { return Equipment; }
+	FORCEINLINE class UCDoAction* GetDoAction() { return DoAction; }
 
 private:
 	UPROPERTY(EditAnywhere)
@@ -23,6 +24,12 @@ private:
 
 	UPROPERTY(EditAnywhere)
 		FEquipmentData EquipmentData;
+
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<class UCDoAction> DoActionClass;
+
+	UPROPERTY(EditAnywhere)
+		TArray<FDoActionData> DoActionDatas;
 
 public:
 	UCWeaponAsset();
@@ -35,5 +42,8 @@ private:
 
 	UPROPERTY()
 		class UCEquipment* Equipment;
+
+	UPROPERTY()
+		class UCDoAction* DoAction;
 
 };
