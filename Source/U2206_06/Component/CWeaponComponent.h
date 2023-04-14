@@ -39,6 +39,7 @@ private:
 public:
 	class ACAttachment* GetAttachment();
 	class UCEquipment* GetEquipment();
+	class UCDoAction* GetDoAction();
 
 protected:
 	virtual void BeginPlay() override;
@@ -54,6 +55,8 @@ public:
 	void SetWarpMode();
 	void SetRotatorMode();
 	void SetBowMode();
+
+	void DoAction();
 
 private:
 	void SetMode(EWeaponType InType);

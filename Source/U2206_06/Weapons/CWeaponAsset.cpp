@@ -1,6 +1,7 @@
 #include "Weapons/CWeaponAsset.h"
 #include "Global.h"
 #include "CAttachment.h"
+#include "CDoAction.h"
 #include "CEquipment.h"
 #include "GameFramework/Character.h"
 
@@ -32,5 +33,11 @@ void UCWeaponAsset::BeginPlay(ACharacter* InOwner)
 			Equipment->OnEquipmentUnequip.AddDynamic(Attachment, &ACAttachment::OnUnequip);
 
 		}
+	}
+
+	if(!!DoActionClass)
+	{
+		DoAction = NewObject<UCDoAction>(this, DoActionClass);
+		DoAction->BeginPlay(Attachment, Equipment, InOwner, DoActionDatas);
 	}
 }

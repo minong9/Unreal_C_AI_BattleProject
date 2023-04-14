@@ -4,6 +4,7 @@
 #include "GameFramework/Character.h"
 #include "Weapons/CWeaponAsset.h"
 #include "Weapons/CAttachment.h"
+#include "Weapons/CDoAction.h"
 #include "Weapons/CEquipment.h"
 
 UCWeaponComponent::UCWeaponComponent()
@@ -32,6 +33,14 @@ UCEquipment* UCWeaponComponent::GetEquipment()
 	CheckFalseResult(!!DataAssets[(int32)Type], nullptr);
 
 	return DataAssets[(int32)Type]->GetEquipment();
+}
+
+UCDoAction* UCWeaponComponent::GetDoAction()
+{
+	CheckTrueResult(IsUnarmedMode(), nullptr);
+	CheckFalseResult(!!DataAssets[(int32)Type], nullptr);
+
+	return DataAssets[(int32)Type]->GetDoAction();
 }
 
 
@@ -105,6 +114,12 @@ void UCWeaponComponent::SetBowMode()
 	CheckFalse(IsIdleMode());
 
 	SetMode(EWeaponType::Bow);
+}
+
+void UCWeaponComponent::DoAction()
+{
+	if (!!GetDoAction())
+		GetDoAction()->DoAction();
 }
 
 void UCWeaponComponent::SetMode(EWeaponType InType)

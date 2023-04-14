@@ -5,8 +5,7 @@
 
 void UCDoAction_Combo::DoAction()
 {
-	Super::DoAction();
-	CheckFalse(DoActionDatas.Num() < 1);
+	CheckTrue(DoActionDatas.Num() < 1);
 
 	if(bEnable)
 	{
@@ -17,6 +16,8 @@ void UCDoAction_Combo::DoAction()
 	}
 
 	CheckFalse(State->IsIdleMode());
+
+	Super::DoAction();
 	DoActionDatas[Index].DoAction(OwnerCharacter);
 }
 

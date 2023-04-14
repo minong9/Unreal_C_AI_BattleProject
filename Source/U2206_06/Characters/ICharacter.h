@@ -15,5 +15,8 @@ class U2206_06_API IICharacter
 	GENERATED_BODY()
 
 public:
-	virtual void End_BackStep() = 0;
+	virtual void End_BackStep() {};
+
+public:
+	virtual void Change_Color(class ACharacter* InCharacter, FLinearColor InColor);
 };
