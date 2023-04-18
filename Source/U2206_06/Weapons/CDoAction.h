@@ -26,6 +26,20 @@ public:
 	virtual void Begin_DoAction();
 	virtual void End_DoAction();
 
+public:
+	UFUNCTION()
+		virtual void OnAttachmentBeginCollision() {}
+
+	UFUNCTION()
+		virtual void OnAttachmentEndCollision() {}
+
+	UFUNCTION()
+		virtual void OnAttachmentBeginOverlap(class ACharacter* InAttacker, AActor* InAttackCauser, class ACharacter* InOther) {}
+
+	UFUNCTION()
+		virtual void OnAttachmentEndOverlap(class ACharacter* InAttacker, class ACharacter* InOther) {}
+
+
 protected:
 	bool bBeginAction;
 

@@ -36,3 +36,24 @@ void UCDoAction_Combo::End_DoAction()
 
 	Index = 0;
 }
+
+void UCDoAction_Combo::OnAttachmentEndCollision()
+{
+	Super::OnAttachmentEndCollision();
+
+	Hitted.Empty();
+}
+
+void UCDoAction_Combo::OnAttachmentBeginOverlap(ACharacter* InAttacker, AActor* InAttackCauser, ACharacter* InOther)
+{
+	Super::OnAttachmentBeginOverlap(InAttacker, InAttackCauser, InOther);
+	CheckNull(InOther);
+
+	for (ACharacter* hitted : Hitted)
+		CheckTrue(hitted == InOther);
+
+	Hitted.AddUnique(InOther);
+	CLog::Log(InOther);
+
+}
+

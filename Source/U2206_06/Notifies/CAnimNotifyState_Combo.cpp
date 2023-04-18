@@ -18,8 +18,6 @@ void UCAnimNotifyState_Combo::NotifyBegin(USkeletalMeshComponent* MeshComp, UAni
 	CheckNull(weapon);
 	CheckNull(weapon->GetDoAction());
 
-	weapon->GetDoAction()->Begin_DoAction();
-
 	UCDoAction_Combo* combo = Cast<UCDoAction_Combo>(weapon->GetDoAction());
 	CheckNull(combo);
 
@@ -29,15 +27,12 @@ void UCAnimNotifyState_Combo::NotifyBegin(USkeletalMeshComponent* MeshComp, UAni
 void UCAnimNotifyState_Combo::NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation)
 {
 	Super::NotifyEnd(MeshComp, Animation);
-
 	CheckNull(MeshComp);
 	CheckNull(MeshComp->GetOwner());
 
 	UCWeaponComponent* weapon = CHelpers::GetComponent<UCWeaponComponent>(MeshComp->GetOwner());
 	CheckNull(weapon);
 	CheckNull(weapon->GetDoAction());
-
-	weapon->GetDoAction()->End_DoAction();
 
 	UCDoAction_Combo* combo = Cast<UCDoAction_Combo>(weapon->GetDoAction());
 	CheckNull(combo);

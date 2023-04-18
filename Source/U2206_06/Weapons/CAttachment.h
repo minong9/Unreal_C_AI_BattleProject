@@ -4,6 +4,12 @@
 #include "GameFramework/Actor.h"
 #include "CAttachment.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FAttachmentBeginCollision);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FAttachmentEndCollision);
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FAttachmentBeginOverlap, class ACharacter*, InAttacker, AActor*, InAttackCauser, class ACharacter*, InOther);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FAttachmentEndOverlap, class ACharacter*, InAttacker, class ACharacter*, InOther);
+
 UCLASS()
 class U2206_06_API ACAttachment : public AActor
 {
@@ -30,8 +36,29 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = "Attach")
 		void AttachTo(FName InSocketName);
 
+private:
+	UFUNCTION()
+		void OnComponentBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+		void OnComponentEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
+public:
+	void OnCollisions();
+	void OffCollisions();
+
+public:
+	FAttachmentBeginCollision OnAttachmentBeginCollision;
+	FAttachmentEndCollision OnAttachmentEndCollision;
+
+	FAttachmentBeginOverlap OnAttachmentBeginOverlap;
+	FAttachmentEndOverlap OnAttachmentEndOverlap;
+
 protected:
 	UPROPERTY(BlueprintReadOnly)
 		class ACharacter* OwnerCharacter;
+
+protected:
+	TArray<class UShapeComponent*> Collisions;
 
 };
