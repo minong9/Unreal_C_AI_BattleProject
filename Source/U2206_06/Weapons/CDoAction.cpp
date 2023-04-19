@@ -12,7 +12,7 @@ UCDoAction::UCDoAction()
 }
 
 void UCDoAction::BeginPlay(ACAttachment* InAttachment, UCEquipment* InEquipment, ACharacter* InOwner,
-	const TArray<FDoActionData>& InDoActionData)
+	const TArray<FDoActionData>& InDoActionData, const TArray<FHitData>& InHitData)
 {
 	OwnerCharacter = InOwner;
 	World = OwnerCharacter->GetWorld();
@@ -21,6 +21,7 @@ void UCDoAction::BeginPlay(ACAttachment* InAttachment, UCEquipment* InEquipment,
 	Movement = CHelpers::GetComponent<UCMovementComponent>(OwnerCharacter);
 
 	DoActionDatas = InDoActionData;
+	HitDatas = InHitData;
 }
 
 void UCDoAction::DoAction()

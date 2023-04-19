@@ -33,6 +33,8 @@ private:
 public:
 	ACEnemy();
 
+	float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -40,5 +42,25 @@ private:
 	UFUNCTION()
 		void OnStateTypeChanged(EStateType InPrevType, EStateType InNewType);
 
+	UFUNCTION()
+		void RestoreColor();
 
+private:
+	void Hitted();
+
+public:
+	void End_Hitted() override;
+
+private:
+	struct FDamageData
+	{
+		float Power;
+		class ACharacter* Character;
+		class AActor* Causer;
+
+		struct FActionDamageEvent* Event;
+	}Damage;
+
+private:
+	FTimerHandle RestoreColor_TimerHandle;
 };

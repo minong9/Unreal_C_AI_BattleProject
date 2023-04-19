@@ -30,7 +30,6 @@ private:
 	bool bEnable;
 	bool bExist;
 
-
 private:
 	TArray<class ACharacter*> Hitted;
 };

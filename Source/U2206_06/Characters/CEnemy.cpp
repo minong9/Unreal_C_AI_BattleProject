@@ -5,6 +5,7 @@
 #include "Component/CWeaponComponent.h"
 #include "Component/CMovementComponent.h"
 #include "Component/CMontagesComponent.h"
+#include "Weapons/CWeaponStructures.h"
 
 ACEnemy::ACEnemy()
 {
@@ -27,6 +28,7 @@ ACEnemy::ACEnemy()
 	GetCharacterMovement()->RotationRate = FRotator(0, 720, 0);
 }
 
+
 void ACEnemy::BeginPlay()
 {
 	Super::BeginPlay();
@@ -47,9 +49,63 @@ void ACEnemy::BeginPlay()
 
 void ACEnemy::OnStateTypeChanged(EStateType InPrevType, EStateType InNewType)
 {
-	//switch (InNewType)
-	//{
-
-	//}
+	switch (InNewType)
+	{
+		case EStateType::Hitted: Hitted();  break;
+	}
 }
 
+float ACEnemy::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator,
+                          AActor* DamageCauser)
+{
+	float damage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+
+	Damage.Power = damage;
+	Damage.Character = Cast<ACharacter>(EventInstigator->GetPawn());
+	Damage.Causer = DamageCauser;
+	Damage.Event = (FActionDamageEvent*)&DamageEvent;
+
+	State->SetHittedMode();
+
+	return damage;
+}
+
+void ACEnemy::Hitted()
+{
+	//TODO : HP-Damage 처리
+
+	//TODO : 사망처리
+
+	Change_Color(this, FLinearColor::Red);
+
+	FTimerDelegate timerDelegate;
+	timerDelegate.BindUFunction(this, "RestoreColor");
+
+	GetWorld()->GetTimerManager().SetTimer(RestoreColor_TimerHandle, timerDelegate, 0.2f, false);
+
+	if(!!Damage.Event && !!Damage.Event->HitData)
+	{
+		FHitData* data = Damage.Event->HitData;
+
+		data->PlayMontage(this);
+		data->PlayHitStop(GetWorld());
+	}
+}
+
+void ACEnemy::RestoreColor()
+{
+	Change_Color(this, OriginColor);
+
+	//적이 사망했을 경우 타이머가 남아있으면 널이 되면서 터질 수 있으므로 반드시 제거를 해줘야함
+	GetWorld()->GetTimerManager().ClearTimer(RestoreColor_TimerHandle);
+}
+
+void ACEnemy::End_Hitted()
+{
+	if (!!Damage.Event && !!Damage.Event->HitData)
+		Damage.Event->HitData->EndHitted(this);
+
+	State->SetIdleMode();
+}
+
+//TODO: 23.04.20. 사운드, 이펙트 등 처리할 예정

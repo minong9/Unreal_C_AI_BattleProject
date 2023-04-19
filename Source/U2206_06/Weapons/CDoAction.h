@@ -18,7 +18,8 @@ public:
 		class ACAttachment* InAttachment,
 		class UCEquipment* InEquipment,
 		class ACharacter* InOwner,
-		const TArray<FDoActionData>& InDoActionData
+		const TArray<FDoActionData>& InDoActionData,
+		const TArray<FHitData>& InHitData
 	);
 
 public:
@@ -50,6 +51,7 @@ protected:
 	class UCStateComponent* State;
 
 	TArray<FDoActionData> DoActionDatas;
+	TArray<FHitData> HitDatas;
 
 
 };

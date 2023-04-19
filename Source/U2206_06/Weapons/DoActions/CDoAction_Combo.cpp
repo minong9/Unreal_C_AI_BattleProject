@@ -52,8 +52,10 @@ void UCDoAction_Combo::OnAttachmentBeginOverlap(ACharacter* InAttacker, AActor* 
 	for (ACharacter* hitted : Hitted)
 		CheckTrue(hitted == InOther);
 
+	//Add와 AddUnique의 차이점 : AddUnique는 컨테이너 안에 중복된 값이 있으면 추가하지 않음
 	Hitted.AddUnique(InOther);
-	CLog::Log(InOther);
 
+	CheckTrue(HitDatas.Num() < 1);
+	HitDatas[Index].SendDamage(InAttacker, InAttackCauser, InOther);
 }
 

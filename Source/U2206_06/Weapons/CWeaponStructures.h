@@ -54,6 +54,61 @@ public:
 	void DoAction(class ACharacter* InOwner);
 };
 
+USTRUCT()
+struct FHitData
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere)
+		class UAnimMontage* Montage;
+
+	UPROPERTY(EditAnywhere)
+		float PlayRate = 1;
+
+	UPROPERTY(EditAnywhere)
+		bool bCanMove = true;
+
+	UPROPERTY(EditAnywhere)
+		float Power;
+
+	UPROPERTY(EditAnywhere)
+		float Launch = 100;
+
+	UPROPERTY(EditAnywhere)
+		float StopTime;
+
+	UPROPERTY(EditAnywhere)
+		class USoundWave* Sound;
+
+	UPROPERTY(EditAnywhere)
+		class UFXSystemAsset* Effect;
+
+	UPROPERTY(EditAnywhere)
+		FVector EffectLocation = FVector::ZeroVector;
+
+	UPROPERTY(EditAnywhere)
+		FVector EffectorScale = FVector::OneVector;
+
+public:
+	void SendDamage(class ACharacter* InAttacker, AActor* InAttackCauser, class ACharacter* InOther);
+	void PlayMontage(class ACharacter* InOwner);
+	void PlayHitStop(UWorld* InWorld);
+
+	void EndHitted(class ACharacter* InOwner);
+};
+
+
+USTRUCT()
+struct FActionDamageEvent
+	: public FDamageEvent
+{
+	GENERATED_BODY()
+
+public:
+	//포인터로 넘기는 이유는 복사방지 겸 데이터가 안넘어 올 수도 있기 때문
+	FHitData* HitData;
+};
 
 UCLASS()
 class U2206_06_API UCWeaponStructures : public UObject
