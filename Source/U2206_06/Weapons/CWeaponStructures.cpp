@@ -22,6 +22,32 @@ void FDoActionData::DoAction(ACharacter* InOwner)
         movement->EnableFixedCamera();
 }
 
+void FDoActionData::PlayEffect(UWorld* InWorld, const FVector& InLocation)
+{
+    CheckNull(Effect);
+
+    FTransform transform;
+    transform.SetLocation(EffectLocation);
+    transform.SetScale3D(EffectScale);
+    transform.AddToTranslation(InLocation);
+
+    CHelpers::PlayEffect(InWorld, Effect, transform);
+}
+
+void FDoActionData::PlayEffect(UWorld* InWorld, const FVector& InLocation, const FRotator& InRotation)
+{
+    CheckNull(Effect);
+
+    FTransform transform;
+    transform.SetLocation(InLocation);
+    transform.SetScale3D(EffectScale);
+
+    FVector location = InRotation.RotateVector(EffectLocation);
+    transform.AddToTranslation(location);
+
+    CHelpers::PlayEffect(InWorld, Effect, transform);
+}
+
 /////////////////////////////////////////////////////////////////////////////
 
 //ApplyDamage -> Take Damage(Recieve Damage) -> AnyDamage
@@ -71,6 +97,42 @@ void FHitData::PlayHitStop(UWorld* InWorld)
 
     FTimerHandle timerHandle;
     InWorld->GetTimerManager().SetTimer(timerHandle, timerDalegate, StopTime, false);
+}
+
+void FHitData::PlaySoundWave(ACharacter* InOwner)
+{
+    CheckNull(Sound);
+
+    UWorld* world = InOwner->GetWorld();
+    FVector location = InOwner->GetActorLocation();
+
+    UGameplayStatics::SpawnSoundAtLocation(world, Sound, location);
+}
+
+void FHitData::PlayEffect(UWorld* InWorld, const FVector& InLocation)
+{
+    CheckNull(Effect);
+
+    FTransform transform;
+    transform.SetLocation(EffectLocation);
+    transform.SetScale3D(EffectScale);
+    transform.AddToTranslation(InLocation);
+
+    CHelpers::PlayEffect(InWorld, Effect, transform);
+}
+
+void FHitData::PlayEffect(UWorld* InWorld, const FVector& InLocation, const FRotator& InRotation)
+{
+    CheckNull(Effect);
+
+    FTransform transform;
+    transform.SetLocation(EffectLocation);
+    transform.SetScale3D(EffectScale);
+
+    FVector location = InRotation.RotateVector(InLocation);
+    transform.AddToTranslation(location);
+
+    CHelpers::PlayEffect(InWorld, Effect, transform);
 }
 
 void FHitData::EndHitted(ACharacter* InOwner)

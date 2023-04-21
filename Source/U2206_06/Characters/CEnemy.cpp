@@ -89,7 +89,21 @@ void ACEnemy::Hitted()
 
 		data->PlayMontage(this);
 		data->PlayHitStop(GetWorld());
+		data->PlaySoundWave(this);
+		data->PlayEffect(GetWorld(), GetActorLocation(), GetActorRotation());
+
+		FVector start = GetActorLocation();
+		FVector target = Damage.Character->GetActorLocation();
+		FVector direction = target - start;
+		direction.Normalize();
+
+		LaunchCharacter(-direction * data->Launch, false, false);
+		SetActorRotation(UKismetMathLibrary::FindLookAtRotation(start, target));
 	}
+
+	Damage.Character = nullptr;
+	Damage.Causer = nullptr;
+	Damage.Event = nullptr;
 }
 
 void ACEnemy::RestoreColor()
@@ -109,3 +123,4 @@ void ACEnemy::End_Hitted()
 }
 
 //TODO: 23.04.20. 사운드, 이펙트 등 처리할 예정
+//TODO: 다음주 : 무기관리

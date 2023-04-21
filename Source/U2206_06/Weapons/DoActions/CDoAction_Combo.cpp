@@ -28,12 +28,14 @@ void UCDoAction_Combo::Begin_DoAction()
 
 	bExist = false;
 	DoActionDatas[++Index].DoAction(OwnerCharacter);
+	
 }
 
 void UCDoAction_Combo::End_DoAction()
 {
 	Super::End_DoAction();
 
+	DoActionDatas[Index].PlayEffect(OwnerCharacter->GetWorld(), OwnerCharacter->GetActorLocation(), OwnerCharacter->GetActorRotation());
 	Index = 0;
 }
 

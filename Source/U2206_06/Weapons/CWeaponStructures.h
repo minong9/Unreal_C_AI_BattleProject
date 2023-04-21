@@ -48,10 +48,12 @@ public:
 		FVector EffectLocation = FVector::ZeroVector;
 
 	UPROPERTY(EditAnywhere)
-		FVector EffectorScale = FVector::OneVector;
+		FVector EffectScale = FVector::OneVector;
 
 public:
 	void DoAction(class ACharacter* InOwner);
+	void PlayEffect(UWorld* InWorld, const FVector& InLocation);
+	void PlayEffect(UWorld* InWorld, const FVector& InLocation, const FRotator& InRotation);
 };
 
 USTRUCT()
@@ -88,12 +90,15 @@ public:
 		FVector EffectLocation = FVector::ZeroVector;
 
 	UPROPERTY(EditAnywhere)
-		FVector EffectorScale = FVector::OneVector;
+		FVector EffectScale = FVector::OneVector;
 
 public:
 	void SendDamage(class ACharacter* InAttacker, AActor* InAttackCauser, class ACharacter* InOther);
 	void PlayMontage(class ACharacter* InOwner);
 	void PlayHitStop(UWorld* InWorld);
+	void PlaySoundWave(class ACharacter* InOwner);
+	void PlayEffect(UWorld* InWorld, const FVector& InLocation);
+	void PlayEffect(UWorld* InWorld, const FVector& InLocation, const FRotator& InRotation);
 
 	void EndHitted(class ACharacter* InOwner);
 };

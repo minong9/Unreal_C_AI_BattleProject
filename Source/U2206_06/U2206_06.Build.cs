@@ -4,7 +4,7 @@ public class U2206_06 : ModuleRules
 {
 	public U2206_06(ReadOnlyTargetRules Target) : base(Target)
 	{
-		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+        PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
         PublicIncludePaths.Add(ModuleDirectory);
 
@@ -12,5 +12,6 @@ public class U2206_06 : ModuleRules
         PublicDependencyModuleNames.Add("CoreUObject");
         PublicDependencyModuleNames.Add("Engine");
         PublicDependencyModuleNames.Add("InputCore");
+        PublicDependencyModuleNames.Add("Niagara");
     }
 }
