@@ -7,7 +7,7 @@
 UENUM(BlueprintType)
 enum class EWeaponType : uint8
 {
-	Fist, OneHand, TwoHand, Warp, Rotator, Bow, Max,
+	Fist, Sword, Hammer, Warp, Around, Bow, Max,
 };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FWeaponTypeChanged, EWeaponType, InPrevType, EWeaponType, InNewType);
@@ -24,10 +24,10 @@ private:
 public:
 	FORCEINLINE bool IsUnarmedMode() { return Type == EWeaponType::Max; }
 	FORCEINLINE bool IsFistMode() { return Type == EWeaponType::Fist; }
-	FORCEINLINE bool IsOneHandMode() { return Type == EWeaponType::OneHand; }
-	FORCEINLINE bool IsTwoHandMode() { return Type == EWeaponType::TwoHand; }
+	FORCEINLINE bool IsSwordMode() { return Type == EWeaponType::Sword; }
+	FORCEINLINE bool IsHammerMode() { return Type == EWeaponType::Hammer; }
 	FORCEINLINE bool IsWarpMode() { return Type == EWeaponType::Warp; }
-	FORCEINLINE bool IsRotatorMode() { return Type == EWeaponType::Warp; }
+	FORCEINLINE bool IsAroundMode() { return Type == EWeaponType::Around; }
 	FORCEINLINE bool IsBowMode() { return Type == EWeaponType::Bow; }
 
 public:	
@@ -50,10 +50,10 @@ public:
 public:
 	void SetUnarmedMode();
 	void SetFistMode();
-	void SetOneHandMode();
-	void SetTwoHandMode();
+	void SetSwordMode();
+	void SetHammerMode();
 	void SetWarpMode();
-	void SetRotatorMode();
+	void SetAroundMode();
 	void SetBowMode();
 
 	void DoAction();

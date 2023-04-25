@@ -5,7 +5,9 @@
 #include "Component/CWeaponComponent.h"
 #include "Component/CMovementComponent.h"
 #include "Component/CMontagesComponent.h"
+#include "Component/CStatusComponent.h"
 #include "Weapons/CWeaponStructures.h"
+#include "Components/CapsuleComponent.h"
 
 ACEnemy::ACEnemy()
 {
@@ -13,6 +15,8 @@ ACEnemy::ACEnemy()
 	CHelpers::CreateActorComponent<UCMovementComponent>(this, &Movement, "Movement");
 	CHelpers::CreateActorComponent<UCStateComponent>(this, &State, "State");
 	CHelpers::CreateActorComponent<UCMontagesComponent>(this, &Montages, "Montages");
+	CHelpers::CreateActorComponent<UCStatusComponent>(this, &Status, "Status");
+
 
 	GetMesh()->SetRelativeLocation(FVector(0, 0, -90));
 	GetMesh()->SetRelativeRotation(FRotator(0, -90, 0));
@@ -52,6 +56,7 @@ void ACEnemy::OnStateTypeChanged(EStateType InPrevType, EStateType InNewType)
 	switch (InNewType)
 	{
 		case EStateType::Hitted: Hitted();  break;
+		case EStateType::Dead: Dead();  break;
 	}
 }
 
@@ -75,6 +80,16 @@ void ACEnemy::Hitted()
 	//TODO : HP-Damage 처리
 
 	//TODO : 사망처리
+
+	Status->Damage(Damage.Power);
+	Damage.Power = 0;
+
+	if(Status->GetHealth() <= 0.0f)
+	{
+		State->SetDeadMode();
+
+		return;
+	}
 
 	Change_Color(this, FLinearColor::Red);
 
@@ -122,5 +137,16 @@ void ACEnemy::End_Hitted()
 	State->SetIdleMode();
 }
 
-//TODO: 23.04.20. 사운드, 이펙트 등 처리할 예정
+void ACEnemy::Dead()
+{
+	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+	Montages->PlayDeadMode();
+}
+
+void ACEnemy::End_Dead()
+{
+	Destroy();
+}
+
 //TODO: 다음주 : 무기관리

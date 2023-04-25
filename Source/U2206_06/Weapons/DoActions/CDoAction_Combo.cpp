@@ -43,6 +43,35 @@ void UCDoAction_Combo::OnAttachmentEndCollision()
 {
 	Super::OnAttachmentEndCollision();
 
+	float angle = -2.0f; //뒤에 객체가 없거나 앞에 아무도 없을때 -2가 나옴(타겟이 존재하면 -1 ~ 1이 나옴)
+	ACharacter* candidate = nullptr;
+
+	for(ACharacter* hitted : Hitted)
+	{
+		FVector direction = hitted->GetActorLocation() - OwnerCharacter->GetActorLocation();
+		direction = direction.GetSafeNormal2D();
+
+		FVector forward = FQuat(OwnerCharacter->GetControlRotation()).GetForwardVector();
+
+		float dot = FVector::DotProduct(direction, forward);
+		if(dot >= angle)
+		{
+			angle = dot;
+			candidate = hitted;
+		}
+	}
+
+	if(!!candidate)
+	{
+		//좌우 상관없이 정면에 가까운 적
+		//좌우 구분은 타겟팅할 때(abs 필요)
+		FRotator rotator = UKismetMathLibrary::FindLookAtRotation(OwnerCharacter->GetActorLocation(), candidate->GetActorLocation());
+		FRotator target = FRotator(0, rotator.Yaw, 0);
+
+		AController* controller = OwnerCharacter->GetController<AController>();
+		controller->SetControlRotation(target);
+	}
+
 	Hitted.Empty();
 }
 

@@ -30,6 +30,9 @@ private:
 	UPROPERTY(VisibleDefaultsOnly)
 		class UCMontagesComponent* Montages;
 
+	UPROPERTY(VisibleDefaultsOnly)
+		class UCStatusComponent* Status;
+
 public:
 	ACEnemy();
 
@@ -50,6 +53,12 @@ private:
 
 public:
 	void End_Hitted() override;
+
+private:
+	void Dead();
+
+public:
+	void End_Dead() override;
 
 private:
 	struct FDamageData

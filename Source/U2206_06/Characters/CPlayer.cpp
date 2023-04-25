@@ -39,6 +39,8 @@ ACPlayer::ACPlayer()
 	SpringArm->bUsePawnControlRotation = true;
 	SpringArm->bEnableCameraLag = true;
 
+	State->OnStateTypeChanged.AddDynamic(this, &ACPlayer::OnStateTypeChanged);
+
 	GetCharacterMovement()->RotationRate = FRotator(0, 720, 0);
 }
 
@@ -90,7 +92,9 @@ void ACPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 	PlayerInputComponent->BindAction("Action", EInputEvent::IE_Pressed, Weapon, &UCWeaponComponent::DoAction);
 
-	PlayerInputComponent->BindAction("Sword", EInputEvent::IE_Pressed, Weapon, &UCWeaponComponent::SetOneHandMode);
+	PlayerInputComponent->BindAction("Sword", EInputEvent::IE_Pressed, Weapon, &UCWeaponComponent::SetSwordMode);
+	PlayerInputComponent->BindAction("Hammer", EInputEvent::IE_Pressed, Weapon, &UCWeaponComponent::SetHammerMode);
+
 }
 
 void ACPlayer::OnAvoid()

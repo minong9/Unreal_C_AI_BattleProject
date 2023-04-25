@@ -126,11 +126,10 @@ void FHitData::PlayEffect(UWorld* InWorld, const FVector& InLocation, const FRot
     CheckNull(Effect);
 
     FTransform transform;
-    transform.SetLocation(EffectLocation);
-    transform.SetScale3D(EffectScale);
+    FVector location = InLocation + InRotation.RotateVector(EffectLocation);
 
-    FVector location = InRotation.RotateVector(InLocation);
-    transform.AddToTranslation(location);
+    transform.SetLocation(location);
+    transform.SetScale3D(EffectScale);
 
     CHelpers::PlayEffect(InWorld, Effect, transform);
 }

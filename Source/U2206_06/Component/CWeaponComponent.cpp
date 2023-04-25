@@ -79,19 +79,19 @@ void UCWeaponComponent::SetFistMode()
 	SetMode(EWeaponType::Fist);
 }
 
-void UCWeaponComponent::SetOneHandMode()
+void UCWeaponComponent::SetSwordMode()
 {
 	CheckFalse(IsIdleMode());
 
-	SetMode(EWeaponType::OneHand);
+	SetMode(EWeaponType::Sword);
 }
 
-void UCWeaponComponent::SetTwoHandMode()
+void UCWeaponComponent::SetHammerMode()
 {
 	CheckFalse(IsIdleMode());
 
 
-	SetMode(EWeaponType::TwoHand);
+	SetMode(EWeaponType::Hammer);
 }
 
 void UCWeaponComponent::SetWarpMode()
@@ -102,11 +102,11 @@ void UCWeaponComponent::SetWarpMode()
 	SetMode(EWeaponType::Warp);
 }
 
-void UCWeaponComponent::SetRotatorMode()
+void UCWeaponComponent::SetAroundMode()
 {
 	CheckFalse(IsIdleMode());
 
-	SetMode(EWeaponType::Rotator);
+	SetMode(EWeaponType::Around);
 }
 
 void UCWeaponComponent::SetBowMode()

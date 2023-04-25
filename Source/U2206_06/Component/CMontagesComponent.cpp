@@ -18,6 +18,12 @@ void UCMontagesComponent::PlayBackStepMode()
 
 }
 
+void UCMontagesComponent::PlayDeadMode()
+{
+	PlayAnimMontage(EStateType::Dead);
+
+}
+
 void UCMontagesComponent::PlayAnimMontage(EStateType InType)
 {
 	CheckNull(OwnerCharacter);
