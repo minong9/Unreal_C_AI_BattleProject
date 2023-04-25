@@ -36,6 +36,9 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = "Attach")
 		void AttachTo(FName InSocketName);
 
+	UFUNCTION(BlueprintCallable, Category = "Attach")
+		void AttachToCollision(FName InSocketName);
+
 private:
 	UFUNCTION()
 		void OnComponentBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
