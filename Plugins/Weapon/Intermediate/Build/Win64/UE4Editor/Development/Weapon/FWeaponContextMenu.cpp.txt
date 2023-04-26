@@ -1,0 +1,2 @@
+C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Development\Weapon\Definitions.Weapon.h
+C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\FWeaponContextMenu.h

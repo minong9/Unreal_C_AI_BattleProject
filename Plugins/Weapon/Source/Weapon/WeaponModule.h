@@ -13,4 +13,5 @@ public:
 
 private:
 	TSharedPtr<class FWeaponCommand> Command;
+	TSharedPtr<class FWeaponContextMenu> ContextMenu;
 };
