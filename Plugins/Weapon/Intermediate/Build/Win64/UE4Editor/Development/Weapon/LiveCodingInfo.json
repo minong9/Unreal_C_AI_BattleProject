@@ -2,10 +2,12 @@
 	"RemapUnityFiles": 
 	{
 		"Module.Weapon.cpp.obj": [
-			"WeaponCommand.cpp.obj",
-			"WeaponStyle.cpp.obj",
 			"WeaponAssetFactory.cpp.obj",
 			"WeaponContextMenu.cpp.obj",
+			"WeaponStyle.cpp.obj",
+			"SWeaponListView.cpp.obj",
+			"WeaponAssetEditor.cpp.obj",
+			"WeaponCommand.cpp.obj",
 			"WeaponModule.cpp.obj"
 		],
 		"Module.Weapon.gen.cpp.obj": [

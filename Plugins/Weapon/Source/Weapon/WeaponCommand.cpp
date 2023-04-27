@@ -2,6 +2,7 @@
 #include "WeaponStyle.h"
 
 #include "LevelEditor.h"
+#include "WeaponAssetEditor.h"
 
 FWeaponCommand::FWeaponCommand()
 	: TCommands("Toolbar_Button", FText::FromString(""), NAME_None, FEditorStyle::GetStyleSetName())
@@ -51,5 +52,5 @@ void FWeaponCommand::AddToolBar(FToolBarBuilder& InBuilder)
 
 void FWeaponCommand::OnClicked()
 {
-	GLog->Log("Test");
+	FWeaponAssetEditor::OpenWindow();
 }

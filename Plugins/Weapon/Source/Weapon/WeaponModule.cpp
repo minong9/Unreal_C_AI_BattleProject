@@ -31,6 +31,8 @@ void FWeaponModule::ShutdownModule()
 
 	if (ContextMenu.IsValid())
 		ContextMenu.Reset();
+
+	FWeaponStyle::Shutdown();
 }
 
 #undef LOCTEXT_NAMESPACE
