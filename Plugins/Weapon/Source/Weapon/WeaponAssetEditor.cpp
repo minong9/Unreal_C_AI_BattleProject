@@ -27,7 +27,7 @@ void FWeaponAssetEditor::Open(FString InAssetName)
 {
 	//할당, S가 붙는 것은 모두 SNew로 할당
 	ListView = SNew(SWeaponListView)
-		.Text("TestWindow");
+		.OnListViewSelectedItem(this, &FWeaponAssetEditor::OnListViewSelectedItem);
 
 	//툴바 영역
 	TSharedRef<FTabManager::FLayout> layout = FTabManager::NewLayout("WeaponAssetEditor_Layout")
@@ -73,6 +73,13 @@ TSharedRef<SDockTab> FWeaponAssetEditor::Spawn_ListViewTab(const FSpawnTabArgs& 
 	[
 		ListView.ToSharedRef()
 	];
+}
+
+void FWeaponAssetEditor::OnListViewSelectedItem(FWeaponRowDataPtr InPtr)
+{
+	if (InPtr == nullptr) return;
+
+	GLog->Log(FString("Editor : ") + InPtr->Asset->GetName());
 }
 
 FName FWeaponAssetEditor::GetToolkitFName() const

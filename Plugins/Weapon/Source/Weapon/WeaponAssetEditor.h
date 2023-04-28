@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "SWeaponListView.h"
 #include "Toolkits/AssetEditorToolkit.h"
 
 class WEAPON_API FWeaponAssetEditor
@@ -21,6 +22,9 @@ public:
 
 private:
 	TSharedRef<SDockTab> Spawn_ListViewTab(const FSpawnTabArgs& InArgs);
+
+private:
+	void OnListViewSelectedItem(FWeaponRowDataPtr InPtr);
 
 public:
 	virtual FName GetToolkitFName() const override;

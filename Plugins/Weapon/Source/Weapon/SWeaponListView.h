@@ -33,6 +33,8 @@ typedef SListView<FWeaponRowDataPtr> SWeaponListViewRow;	//실제 한줄을 보여줄 객
 
 ///////////////////////////////////////////////////////////////////////////////
 
+
+
 class WEAPON_API SWeaponTableRow
 	: public SMultiColumnTableRow<FWeaponRowDataPtr>
 {
@@ -54,23 +56,43 @@ private:
 ///////////////////////////////////////////////////////////////////////////////
 
 
- 
+DECLARE_DELEGATE_OneParam(FOnWeaponListViewSelectedItem, FWeaponRowDataPtr);
 
 class WEAPON_API SWeaponListView
 	: public SCompoundWidget
 {
 public:
 	SLATE_BEGIN_ARGS(SWeaponListView) {}
-	SLATE_ARGUMENT(FString, Text)
+	SLATE_EVENT(FOnWeaponListViewSelectedItem, OnListViewSelectedItem)
 	SLATE_END_ARGS()
 
 public:
 	void Construct(const FArguments& InArgs);
 
 private:
+	void ReadDataAssetList();
+
+private:
 	TSharedRef<ITableRow> OnGenerateRow(FWeaponRowDataPtr InRow, const TSharedRef<STableViewBase>& InTable);
+	void OnSelectionChanged(FWeaponRowDataPtr InPtr, ESelectInfo::Type InType);
+
+	FText OnGetAssetCount() const;
+
+	void OnTextChanged(const FText& InText);
+	void OnTextCommitted(const FText& InText, ETextCommit::Type InType);
+
+private:
+	FOnWeaponListViewSelectedItem OnListViewSelectedItem;
 
 private:
 	TArray<FWeaponRowDataPtr> RowDatas;
 	TSharedPtr<SWeaponListViewRow> ListViewDatas;
+
+private:
+	TSharedPtr<class SSearchBox> SearchBox;
+	FText SearchText;
 };
+
+
+
+

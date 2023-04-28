@@ -1,4 +1,4 @@
-#include "WeaponCommand.h"
+﻿#include "WeaponCommand.h"
 #include "WeaponStyle.h"
 
 #include "LevelEditor.h"
@@ -46,8 +46,10 @@ void FWeaponCommand::RegisterCommands()
 
 void FWeaponCommand::AddToolBar(FToolBarBuilder& InBuilder)
 {
+	FString name = TEXT("웨폰");
+
 	InBuilder.AddSeparator();
-	InBuilder.AddToolBarButton(Id, NAME_None, FText::FromString("Weapon"), FText::FromString("Weapon Asset Editor"), FWeaponStyle::Get()->ToolBar_Icon, NAME_None);
+	InBuilder.AddToolBarButton(Id, NAME_None, FText::FromString(name), /*FText::FromString("Weapon"),*/ FText::FromString("Weapon Asset Editor"), FWeaponStyle::Get()->ToolBar_Icon, NAME_None);
 }
 
 void FWeaponCommand::OnClicked()
