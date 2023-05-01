@@ -34,7 +34,6 @@ typedef SListView<FWeaponRowDataPtr> SWeaponListViewRow;	//실제 한줄을 보여줄 객
 ///////////////////////////////////////////////////////////////////////////////
 
 
-
 class WEAPON_API SWeaponTableRow
 	: public SMultiColumnTableRow<FWeaponRowDataPtr>
 {
@@ -52,6 +51,7 @@ protected:
 private:
 	FWeaponRowDataPtr Row;
 };
+
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -71,6 +71,15 @@ public:
 
 private:
 	void ReadDataAssetList();
+
+public:
+	bool HasRowPtrs() { return RowDatas.Num() > 0; }
+	FWeaponRowDataPtr GetFirstDataPtr() { return RowDatas[0]; }
+
+	FWeaponRowDataPtr GetRowDataPtrByName(FString InName);
+	void SelectDataPtr(class UCWeaponAsset* InAsset);
+
+	FString SelectedRowDataPtrName();
 
 private:
 	TSharedRef<ITableRow> OnGenerateRow(FWeaponRowDataPtr InRow, const TSharedRef<STableViewBase>& InTable);
@@ -92,7 +101,3 @@ private:
 	TSharedPtr<class SSearchBox> SearchBox;
 	FText SearchText;
 };
-
-
-
-

@@ -15,6 +15,8 @@ C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\In
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer\AssetTools\Public\AssetToolsModule.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Public\Toolkits/AssetEditorManager.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Public\Toolkits/SimpleAssetEditor.h
+C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponAssetEditor.h
+C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\SWeaponListView.h
 C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Source\U2206_06\Weapons/CWeaponAsset.h
 C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Source\U2206_06\Weapons\CWeaponStructures.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/NoExportTypes.h

@@ -128,6 +128,46 @@ void SWeaponListView::ReadDataAssetList()
 	ListViewDatas->RequestListRefresh();
 }
 
+FWeaponRowDataPtr SWeaponListView::GetRowDataPtrByName(FString InName)
+{
+	if (HasRowPtrs() == false)
+		return nullptr;
+
+	for(FWeaponRowDataPtr ptr : RowDatas)
+	{
+		if (ptr->Name == InName)
+			return ptr;
+	}
+
+	return nullptr;
+}
+
+void SWeaponListView::SelectDataPtr(UCWeaponAsset* InAsset)
+{
+	if (HasRowPtrs() == false)
+		return;
+
+	for(FWeaponRowDataPtr ptr : RowDatas)
+	{
+		if(ptr->Asset == InAsset)
+		{
+			ListViewDatas->SetSelection(ptr);	//아이템을 바꾸고 OnSelectionChanged를 콜해줌
+
+			return;
+		}
+	}
+}
+
+FString SWeaponListView::SelectedRowDataPtrName()
+{
+	TArray<FWeaponRowDataPtr> ptrs = ListViewDatas->GetSelectedItems();
+
+	if (ptrs.Num() > 0)
+		return ptrs[0]->Asset->GetName();
+
+	return "";
+}
+
 TSharedRef<ITableRow> SWeaponListView::OnGenerateRow(FWeaponRowDataPtr InRow, const TSharedRef<STableViewBase>& InTable)
 {
 	return SNew(SWeaponTableRow, InTable)

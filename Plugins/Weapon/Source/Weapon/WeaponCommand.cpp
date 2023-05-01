@@ -54,5 +54,5 @@ void FWeaponCommand::AddToolBar(FToolBarBuilder& InBuilder)
 
 void FWeaponCommand::OnClicked()
 {
-	FWeaponAssetEditor::OpenWindow();
+	FWeaponAssetEditor::OpenWindow(); //어떤 에셋을 선택할지 모르기 때문에 () <- 안을 비워둠
 }

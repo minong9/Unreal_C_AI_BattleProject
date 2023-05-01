@@ -17,11 +17,16 @@ private:
 private:
 	void Open(FString InAssetName);
 
+protected:
+	bool OnRequestClose() override;
+
 public:
 	virtual void RegisterTabSpawners(const TSharedRef<FTabManager>& InTabManager) override;
 
 private:
 	TSharedRef<SDockTab> Spawn_ListViewTab(const FSpawnTabArgs& InArgs);
+	TSharedRef<SDockTab> Spawn_DetailsViewTab(const FSpawnTabArgs& InArgs);
+
 
 private:
 	void OnListViewSelectedItem(FWeaponRowDataPtr InPtr);
@@ -34,8 +39,11 @@ public:
 
 private:
 	TSharedPtr<class SWeaponListView> ListView;
+	TSharedPtr<class IDetailsView> DetailsView;
 
 private:
 	static const FName EditorName;
 	static const FName ListViewTabId;
+	static const FName DetailTabId;
 };
+
