@@ -4,6 +4,7 @@
 #include "WeaponContextMenu.h"
 #include "IAssetTools.h"
 #include "AssetToolsModule.h"
+#include "SEquipmentData.h"
 
 #define LOCTEXT_NAMESPACE "FWeaponModule"
 
@@ -22,6 +23,12 @@ void FWeaponModule::StartupModule()
 
 	ContextMenu = MakeShareable(new FWeaponContextMenu(type));
 	assetTools.RegisterAssetTypeActions(ContextMenu.ToSharedRef());
+
+	//프로퍼티 에디터 모듈 등록
+	FPropertyEditorModule& prop = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
+	prop.RegisterCustomPropertyTypeLayout("EquipmentData", FOnGetPropertyTypeCustomizationInstance::CreateStatic(&SEquipmentData::MakeInstance));
+	
+
 }
 
 void FWeaponModule::ShutdownModule()
@@ -31,6 +38,12 @@ void FWeaponModule::ShutdownModule()
 
 	if (ContextMenu.IsValid())
 		ContextMenu.Reset();
+
+	if (FModuleManager::Get().IsModuleLoaded("PropertyEditor"))
+	{
+		FPropertyEditorModule& prop = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
+		prop.UnregisterCustomPropertyTypeLayout("EquipmentClass");
+	}
 
 	FWeaponStyle::Shutdown();
 }

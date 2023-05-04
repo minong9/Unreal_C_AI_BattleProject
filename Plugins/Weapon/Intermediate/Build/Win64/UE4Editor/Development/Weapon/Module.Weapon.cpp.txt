@@ -1,7 +1,6 @@
 C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Development\Weapon\Definitions.Weapon.h
-C:/Users/pc1/Desktop/230124_Hansung_BackUp/Unreal/0.Class_Project/05_Project/U2206_06/U2206_06/Unreal_C_AI_BattleProject/Plugins/Weapon/Source/Weapon/WeaponAssetFactory.cpp
-C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponAssetFactory.h
-C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Inc\Weapon\WeaponAssetFactory.generated.h
+C:/Users/pc1/Desktop/230124_Hansung_BackUp/Unreal/0.Class_Project/05_Project/U2206_06/U2206_06/Unreal_C_AI_BattleProject/Plugins/Weapon/Source/Weapon/SWeaponListView.cpp
+C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\SWeaponListView.h
 C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Source\U2206_06\Weapons/CWeaponAsset.h
 C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Source\U2206_06\Weapons\CWeaponStructures.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/NoExportTypes.h
@@ -11,30 +10,29 @@ C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Math/UnitC
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\Internationalization/PolyglotTextData.h
 C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Intermediate\Build\Win64\UE4Editor\Inc\U2206_06\CWeaponStructures.generated.h
 C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Intermediate\Build\Win64\UE4Editor\Inc\U2206_06\CWeaponAsset.generated.h
-C:/Users/pc1/Desktop/230124_Hansung_BackUp/Unreal/0.Class_Project/05_Project/U2206_06/U2206_06/Unreal_C_AI_BattleProject/Plugins/Weapon/Source/Weapon/WeaponModule.cpp
-C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponModule.h
-C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponStyle.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Public\EngineUtils.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\ProfilingDebugging/ProfilingHelpers.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/WorldSettings.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/DamageType.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\DamageType.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/Info.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Info.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Sound/AudioVolume.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/Volume.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Volume.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Sound\ReverbSettings.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ReverbSettings.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\AudioVolume.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/ConstructorHelpers.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\WorldSettings.generated.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Slate\Public\Widgets/Input/SSearchBox.h
+C:/Users/pc1/Desktop/230124_Hansung_BackUp/Unreal/0.Class_Project/05_Project/U2206_06/U2206_06/Unreal_C_AI_BattleProject/Plugins/Weapon/Source/Weapon/WeaponAssetFactory.cpp
+C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponAssetFactory.h
+C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Inc\Weapon\WeaponAssetFactory.generated.h
+C:/Users/pc1/Desktop/230124_Hansung_BackUp/Unreal/0.Class_Project/05_Project/U2206_06/U2206_06/Unreal_C_AI_BattleProject/Plugins/Weapon/Source/Weapon/WeaponCommand.cpp
 C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponCommand.h
-C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponContextMenu.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer\AssetTools\Public\AssetTypeActions_Base.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer\AssetTools\Public\IAssetTools.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer\AssetTools\Public\AssetTypeCategories.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer\AssetTools\Public\IAssetTypeActions.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer/Merge/Public/Merge.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Classes\ThumbnailRendering/ThumbnailManager.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Classes\ThumbnailRendering/ThumbnailRenderer.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UnrealEd\ThumbnailRenderer.generated.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UnrealEd\ThumbnailManager.generated.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Public\AutomatedAssetImportData.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UnrealEd\AutomatedAssetImportData.generated.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\AssetTools\IAssetTools.generated.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer\AssetTools\Public\AssetToolsModule.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Public\Toolkits/AssetEditorManager.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Public\Toolkits/SimpleAssetEditor.h
-C:/Users/pc1/Desktop/230124_Hansung_BackUp/Unreal/0.Class_Project/05_Project/U2206_06/U2206_06/Unreal_C_AI_BattleProject/Plugins/Weapon/Source/Weapon/WeaponStyle.cpp
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\SlateCore\Public\Styling/SlateStyle.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\SlateCore\Public\Brushes/SlateBorderBrush.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\SlateCore\Public\Brushes/SlateBoxBrush.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\SlateCore\Public\Brushes/SlateColorBrush.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\SlateCore\Public\Brushes/SlateImageBrush.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\SlateCore\Public\Styling/SlateStyleRegistry.h
+C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponStyle.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\LevelEditor\Public\LevelEditor.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\LevelEditor\Public\ILevelEditor.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\LevelEditor\Public\ViewportTypeDefinition.h
+C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponAssetEditor.h

@@ -11,12 +11,18 @@ FWeaponContextMenu::FWeaponContextMenu(EAssetTypeCategories::Type InType)
 void FWeaponContextMenu::OpenAssetEditor(const TArray<UObject*>& InObjects,
 	TSharedPtr<IToolkitHost> EditWithinLevelEditor)
 {
-	//FSimpleAssetEditor::CreateEditor(EToolkitMode::Standalone, EditWithinLevelEditor, InObjects);
+	//원래 디자인
+	{
+		FSimpleAssetEditor::CreateEditor(EToolkitMode::Standalone, EditWithinLevelEditor, InObjects);
+	}
 
-	if (InObjects.Num() < 1)
-		return;
+	//우리가 커스텀한 디자인
+	{
+		//if (InObjects.Num() < 1)
+		//	return;
 
-	FWeaponAssetEditor::OpenWindow(InObjects[0]->GetName());
+		//FWeaponAssetEditor::OpenWindow(InObjects[0]->GetName());
+	}
 }
 
 FText FWeaponContextMenu::GetName() const

@@ -1,6 +1,7 @@
 #include "WeaponAssetEditor.h"
 #include "Weapons/CWeaponAsset.h"
 #include "SWeaponListView.h"
+#include "SWeaponDetailsView.h"
 
 const FName FWeaponAssetEditor::EditorName = "WeaponAssetEditor";
 const FName FWeaponAssetEditor::ListViewTabId = "ListView";
@@ -60,6 +61,9 @@ void FWeaponAssetEditor::Open(FString InAssetName)
 	FDetailsViewArgs args(false, false, true, FDetailsViewArgs::ObjectsUseNameArea);
 	args.ViewIdentifier = "WeaponAssetEditorDetailsView";
 	DetailsView = prop.CreateDetailView(args);
+
+	FOnGetDetailCustomizationInstance detailsView = FOnGetDetailCustomizationInstance::CreateStatic(&SWeaponDetailsView::MakeInstance);
+	DetailsView->SetGenericLayoutDetailsDelegate(detailsView);
 
 	//툴바 영역
 	TSharedRef<FTabManager::FLayout> layout = FTabManager::NewLayout("WeaponAssetEditor_Layout")
