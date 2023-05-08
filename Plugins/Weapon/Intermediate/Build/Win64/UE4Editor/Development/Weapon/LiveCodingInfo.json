@@ -3,14 +3,15 @@
 	{
 		"Module.Weapon.cpp.obj": [
 			"SWeaponListView.cpp.obj",
+			"WeaponAssetEditor.cpp.obj",
 			"WeaponAssetFactory.cpp.obj",
 			"WeaponCommand.cpp.obj",
-			"SEquipmentData.cpp.obj",
-			"SWeaponDetailsView.cpp.obj",
-			"WeaponAssetEditor.cpp.obj",
 			"WeaponContextMenu.cpp.obj",
 			"WeaponModule.cpp.obj",
-			"WeaponStyle.cpp.obj"
+			"WeaponStyle.cpp.obj",
+			"SEquipmentData.cpp.obj",
+			"SWeaponCheckBoxes.cpp.obj",
+			"SWeaponDetailsView.cpp.obj"
 		],
 		"Module.Weapon.gen.cpp.obj": [
 			"Weapon.init.gen.cpp.obj",
