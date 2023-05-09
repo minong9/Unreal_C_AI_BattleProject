@@ -8,6 +8,7 @@ C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\PropertyEditor\Public\I
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\PropertyEditor\Public\DetailCategoryBuilder.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\PropertyEditor\Public\IDetailCustomNodeBuilder.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\PropertyEditor\Public\DetailBuilderTypes.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\PropertyEditor\Public\DetailWidgetRow.h
 C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Source\U2206_06\Weapons/CWeaponAsset.h
 C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Source\U2206_06\Weapons\CWeaponStructures.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/NoExportTypes.h

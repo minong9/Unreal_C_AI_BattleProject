@@ -1,0 +1,17 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-Weapon-0046.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Intermediate\Build\Win64\U2206_06Editor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.h.obj"
+"C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Development\Weapon\SEquipmentData.cpp.obj"
+"C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Development\Weapon\SWeaponCheckBoxes.cpp.obj"
+"C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Development\Weapon\SWeaponDetailsView.cpp.obj"
+"C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Development\Weapon\Module.Weapon.cpp.obj"
+"C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Development\Weapon\Module.Weapon.gen.cpp.obj"
+"C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Development\Weapon\Default.rc2.res"
+/OUT:"C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Development\Weapon\UE4Editor-Weapon-0046.lib"
+/INCLUDE:IMPLEMENT_MODULE_Weapon

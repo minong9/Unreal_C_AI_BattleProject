@@ -26,6 +26,8 @@ TSharedPtr<SWeaponCheckBoxes> SEquipmentData::CreateCheckBoxes()
 
 void SEquipmentData::CustomizeHeader(TSharedRef<IPropertyHandle> InPropertyHandle, FDetailWidgetRow& InHeaderRow, IPropertyTypeCustomizationUtils& InCustomizationUtils)
 {
+	CheckBoxes->SetUtilities(InCustomizationUtils.GetPropertyUtilities());
+
 	InHeaderRow
 	.NameContent()
 	[
