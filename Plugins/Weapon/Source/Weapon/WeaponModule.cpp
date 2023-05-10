@@ -5,6 +5,8 @@
 #include "IAssetTools.h"
 #include "AssetToolsModule.h"
 #include "SEquipmentData.h"
+#include "SDoActionData.h"
+#include "SHitData.h"
 
 #define LOCTEXT_NAMESPACE "FWeaponModule"
 
@@ -27,7 +29,9 @@ void FWeaponModule::StartupModule()
 	//프로퍼티 에디터 모듈 등록
 	FPropertyEditorModule& prop = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
 	prop.RegisterCustomPropertyTypeLayout("EquipmentData", FOnGetPropertyTypeCustomizationInstance::CreateStatic(&SEquipmentData::MakeInstance));
-	
+	prop.RegisterCustomPropertyTypeLayout("DoActionData", FOnGetPropertyTypeCustomizationInstance::CreateStatic(&SDoActionData::MakeInstance));
+
+	prop.RegisterCustomPropertyTypeLayout("HitData", FOnGetPropertyTypeCustomizationInstance::CreateStatic(&SHitData::MakeInstance));
 
 }
 
@@ -42,7 +46,9 @@ void FWeaponModule::ShutdownModule()
 	if (FModuleManager::Get().IsModuleLoaded("PropertyEditor"))
 	{
 		FPropertyEditorModule& prop = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
-		prop.UnregisterCustomPropertyTypeLayout("EquipmentClass");
+		prop.UnregisterCustomPropertyTypeLayout("EquipmentData");
+		prop.UnregisterCustomPropertyTypeLayout("DoActionData");
+		prop.UnregisterCustomPropertyTypeLayout("HitData");
 	}
 
 	FWeaponStyle::Shutdown();

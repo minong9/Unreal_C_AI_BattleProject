@@ -1,4 +1,14 @@
 C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Development\Weapon\Definitions.Weapon.h
+C:/Users/yuki/Documents/GitHub/Unreal_C_AI_BattleProject/Plugins/Weapon/Source/Weapon/SWeaponCheckBoxes.cpp
+C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\SWeaponCheckBoxes.h
+C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\SWeaponDetailsView.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\PropertyEditor\Public\IDetailCustomization.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Slate\Public\Widgets/Layout/SUniformGridPanel.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\PropertyEditor\Public\IPropertyUtilities.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\PropertyEditor\Public\IDetailPropertyRow.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\PropertyEditor\Public\IDetailChildrenBuilder.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\PropertyEditor\Public\DetailBuilderTypes.h
+C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\PropertyEditor\Public\DetailWidgetRow.h
 C:/Users/yuki/Documents/GitHub/Unreal_C_AI_BattleProject/Plugins/Weapon/Source/Weapon/SWeaponListView.cpp
 C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\SWeaponListView.h
 C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Source\U2206_06\Weapons/CWeaponAsset.h
@@ -28,8 +38,6 @@ C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\In
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Slate\Public\Widgets/Input/SSearchBox.h
 C:/Users/yuki/Documents/GitHub/Unreal_C_AI_BattleProject/Plugins/Weapon/Source/Weapon/WeaponAssetEditor.cpp
 C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponAssetEditor.h
-C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\SWeaponDetailsView.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\PropertyEditor\Public\IDetailCustomization.h
 C:/Users/yuki/Documents/GitHub/Unreal_C_AI_BattleProject/Plugins/Weapon/Source/Weapon/WeaponAssetFactory.cpp
 C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponAssetFactory.h
 C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Inc\Weapon\WeaponAssetFactory.generated.h
@@ -39,26 +47,6 @@ C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\W
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\LevelEditor\Public\LevelEditor.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\LevelEditor\Public\ILevelEditor.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\LevelEditor\Public\ViewportTypeDefinition.h
-C:/Users/yuki/Documents/GitHub/Unreal_C_AI_BattleProject/Plugins/Weapon/Source/Weapon/WeaponContextMenu.cpp
-C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponContextMenu.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer\AssetTools\Public\AssetTypeActions_Base.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer\AssetTools\Public\IAssetTools.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer\AssetTools\Public\AssetTypeCategories.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer\AssetTools\Public\IAssetTypeActions.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer/Merge/Public/Merge.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Classes\ThumbnailRendering/ThumbnailManager.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Classes\ThumbnailRendering/ThumbnailRenderer.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UnrealEd\ThumbnailRenderer.generated.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UnrealEd\ThumbnailManager.generated.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Public\AutomatedAssetImportData.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\UnrealEd\AutomatedAssetImportData.generated.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\AssetTools\IAssetTools.generated.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer\AssetTools\Public\AssetToolsModule.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Public\Toolkits/AssetEditorManager.h
-C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Public\Toolkits/SimpleAssetEditor.h
-C:/Users/yuki/Documents/GitHub/Unreal_C_AI_BattleProject/Plugins/Weapon/Source/Weapon/WeaponModule.cpp
-C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponModule.h
-C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\SEquipmentData.h
 C:/Users/yuki/Documents/GitHub/Unreal_C_AI_BattleProject/Plugins/Weapon/Source/Weapon/WeaponStyle.cpp
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\SlateCore\Public\Styling/SlateStyle.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\SlateCore\Public\Brushes/SlateBorderBrush.h

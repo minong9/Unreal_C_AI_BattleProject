@@ -1,8 +1,8 @@
-C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Development\Weapon\Definitions.Weapon.h
-C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponModule.h
-C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponStyle.h
-C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponCommand.h
-C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponContextMenu.h
+C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Development\Weapon\Definitions.Weapon.h
+C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponModule.h
+C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponStyle.h
+C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponCommand.h
+C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\WeaponContextMenu.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer\AssetTools\Public\AssetTypeActions_Base.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer\AssetTools\Public\IAssetTools.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer\AssetTools\Public\AssetTypeCategories.h
@@ -18,4 +18,6 @@ C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\In
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Developer\AssetTools\Public\AssetToolsModule.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Public\Toolkits/AssetEditorManager.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Editor\UnrealEd\Public\Toolkits/SimpleAssetEditor.h
-C:\Users\pc1\Desktop\230124_Hansung_BackUp\Unreal\0.Class_Project\05_Project\U2206_06\U2206_06\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\SEquipmentData.h
+C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\SEquipmentData.h
+C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\SDoActionData.h
+C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon\SHitData.h

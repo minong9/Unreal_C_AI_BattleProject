@@ -13,15 +13,15 @@ void FWeaponContextMenu::OpenAssetEditor(const TArray<UObject*>& InObjects,
 {
 	//원래 디자인
 	{
-		FSimpleAssetEditor::CreateEditor(EToolkitMode::Standalone, EditWithinLevelEditor, InObjects);
+		//FSimpleAssetEditor::CreateEditor(EToolkitMode::Standalone, EditWithinLevelEditor, InObjects);
 	}
 
 	//우리가 커스텀한 디자인
 	{
-		//if (InObjects.Num() < 1)
-		//	return;
+		if (InObjects.Num() < 1)
+			return;
 
-		//FWeaponAssetEditor::OpenWindow(InObjects[0]->GetName());
+		FWeaponAssetEditor::OpenWindow(InObjects[0]->GetName());
 	}
 }
 
