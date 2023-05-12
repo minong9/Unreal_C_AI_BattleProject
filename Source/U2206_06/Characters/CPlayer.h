@@ -3,11 +3,11 @@
 #include "CoreMinimal.h"
 #include "ICharacter.h"
 #include "GameFramework/Character.h"
-#include "Component/CStateComponent.h"
+#include "Components/CStateComponent.h"
 #include "CPlayer.generated.h"
 
 UCLASS()
-class U2206_06_API ACPlayer
+class U2206_06_API ACPlayer 
 	: public ACharacter
 	, public IICharacter
 {
@@ -39,7 +39,7 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-public:
+public:	
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
@@ -51,7 +51,7 @@ private:
 
 private:
 	void BackStep();
-
+	
 public:
 	void End_BackStep() override;
 };

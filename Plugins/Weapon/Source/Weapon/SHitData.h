@@ -17,5 +17,4 @@ public:
 
 private:
 	static TArray<TSharedPtr<class SWeaponCheckBoxes>> CheckBoxes;
-
 };

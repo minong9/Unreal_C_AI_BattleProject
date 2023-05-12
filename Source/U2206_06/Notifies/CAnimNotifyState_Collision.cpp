@@ -1,6 +1,6 @@
 #include "Notifies/CAnimNotifyState_Collision.h"
 #include "Global.h"
-#include "Component/CWeaponComponent.h"
+#include "Components/CWeaponComponent.h"
 #include "Weapons/CAttachment.h"
 
 FString UCAnimNotifyState_Collision::GetNotifyName_Implementation() const
@@ -8,7 +8,7 @@ FString UCAnimNotifyState_Collision::GetNotifyName_Implementation() const
 	return "Collision";
 }
 
-void UCAnimNotifyState_Collision::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, float TotalDuration)
+void UCAnimNotifyState_Collision::NotifyBegin(USkeletalMeshComponent * MeshComp, UAnimSequenceBase * Animation, float TotalDuration)
 {
 	Super::NotifyBegin(MeshComp, Animation, TotalDuration);
 	CheckNull(MeshComp);
@@ -21,7 +21,7 @@ void UCAnimNotifyState_Collision::NotifyBegin(USkeletalMeshComponent* MeshComp, 
 	weapon->GetAttachment()->OnCollisions();
 }
 
-void UCAnimNotifyState_Collision::NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation)
+void UCAnimNotifyState_Collision::NotifyEnd(USkeletalMeshComponent * MeshComp, UAnimSequenceBase * Animation)
 {
 	Super::NotifyEnd(MeshComp, Animation);
 	CheckNull(MeshComp);

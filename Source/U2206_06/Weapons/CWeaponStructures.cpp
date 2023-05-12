@@ -1,143 +1,140 @@
 #include "Weapons/CWeaponStructures.h"
 #include "Global.h"
 #include "GameFramework/Character.h"
-#include "Component/CStateComponent.h"
-#include "Component/CMovementComponent.h"
+#include "Components/CStateComponent.h"
+#include "Components/CMovementComponent.h"
 #include "Animation/AnimMontage.h"
 
-void FDoActionData::DoAction(ACharacter* InOwner)
+void FDoActionData::DoAction(ACharacter * InOwner)
 {
-    //UCStateComponent* state = CHelpers::GetComponent<UCStateComponent>(InOwner);
-    //if (!!state)
-    //    state->SetActionMode();
+	UCMovementComponent* movement = CHelpers::GetComponent<UCMovementComponent>(InOwner);
+	
+	if (!!movement)
+		bCanMove ? movement->Move() : movement->Stop();
 
-    UCMovementComponent* movement = CHelpers::GetComponent<UCMovementComponent>(InOwner);
-    if (!!movement)
-        bCanMove ? movement->Move() : movement->Stop();
+	if (!!InOwner && !!Montage)
+		InOwner->PlayAnimMontage(Montage, PlayRate);
 
-    if (!!InOwner && !!Montage)
-        InOwner->PlayAnimMontage(Montage, PlayRate);
-
-    if (!!movement && bFixedCamera)
-        movement->EnableFixedCamera();
+	if (!!movement && bFixedCamera)
+		movement->EnableFixedCamera();
 }
 
-void FDoActionData::PlayEffect(UWorld* InWorld, const FVector& InLocation)
+void FDoActionData::PlayEffect(UWorld * InWorld, const FVector & InLocation)
 {
-    CheckNull(Effect);
+	CheckNull(Effect);
 
-    FTransform transform;
-    transform.SetLocation(EffectLocation);
-    transform.SetScale3D(EffectScale);
-    transform.AddToTranslation(InLocation);
+	FTransform transform;
+	transform.SetLocation(EffectLocation);
+	transform.SetScale3D(EffectScale);
+	transform.AddToTranslation(InLocation);
 
-    CHelpers::PlayEffect(InWorld, Effect, transform);
+	CHelpers::PlayEffect(InWorld, Effect, transform);
 }
 
-void FDoActionData::PlayEffect(UWorld* InWorld, const FVector& InLocation, const FRotator& InRotation)
+void FDoActionData::PlayEffect(UWorld * InWorld, const FVector & InLocation, const FRotator & InRotation)
 {
-    CheckNull(Effect);
+	CheckNull(Effect);
 
-    FTransform transform;
-    transform.SetLocation(InLocation);
-    transform.SetScale3D(EffectScale);
+	FTransform transform;
+	transform.SetLocation(InLocation);
+	transform.SetScale3D(EffectScale);
 
-    FVector location = InRotation.RotateVector(EffectLocation);
-    transform.AddToTranslation(location);
+	FVector location = InRotation.RotateVector(EffectLocation);
+	transform.AddToTranslation(location);
 
-    CHelpers::PlayEffect(InWorld, Effect, transform);
+	CHelpers::PlayEffect(InWorld, Effect, transform);
 }
 
-/////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
-//ApplyDamage -> Take Damage(Recieve Damage) -> AnyDamage
-
-void FHitData::SendDamage(ACharacter* InAttacker, AActor* InAttackCauser, ACharacter* InOther)
+void FHitData::SendDamage(ACharacter * InAttacker, AActor * InAttackCauser, ACharacter * InOther)
 {
-    FActionDamageEvent e;
-    e.HitData = this;   //본인 것을 그대로 넘겨줌
+	FActionDamageEvent e;
+	e.HitData = this;
 
 	InOther->TakeDamage(Power, e, InAttacker->GetController(), InAttackCauser);
 }
 
-void FHitData::PlayMontage(ACharacter* InOwner)
+void FHitData::PlayMontage(ACharacter * InOwner)
 {
-    UCMovementComponent* movement = CHelpers::GetComponent<UCMovementComponent>(InOwner);
-
+	UCMovementComponent* movement = CHelpers::GetComponent<UCMovementComponent>(InOwner);
+	
 	if (!!movement)
-        bCanMove ? movement->Move() : movement->Stop();
+		bCanMove ? movement->Move() : movement->Stop();
 
-    if (!!Montage)
-        InOwner->PlayAnimMontage(Montage, PlayRate);
+	if (!!Montage)
+		InOwner->PlayAnimMontage(Montage, PlayRate);
 }
 
-void FHitData::PlayHitStop(UWorld* InWorld)
+void FHitData::PlayHitStop(UWorld * InWorld)
 {
-    CheckTrue(FMath::IsNearlyZero(StopTime));
+	CheckTrue(FMath::IsNearlyZero(StopTime));
 
-    TArray<APawn*> pawns;
-    for(AActor* actor : InWorld->GetCurrentLevel()->Actors)
-    {
-        APawn* pawn = Cast<ACharacter>(actor);
 
-        if(!!pawn)
-        {
-            pawn->CustomTimeDilation = 1e-3f;
+	TArray<APawn*> pawns;
+	for (AActor* actor : InWorld->GetCurrentLevel()->Actors)
+	{
+		APawn* pawn = Cast<ACharacter>(actor);
 
-            pawns.Add(pawn);
-        }
-    }
+		if (!!pawn)
+		{
+			pawn->CustomTimeDilation = 1e-3f;
+			
+			pawns.Add(pawn);
+		}
+	}
 
-    FTimerDelegate timerDalegate;
-    timerDalegate.BindLambda([=]()
-    {
-        for (APawn* pawn : pawns)
-            pawn->CustomTimeDilation = 1;
-    });
 
-    FTimerHandle timerHandle;
-    InWorld->GetTimerManager().SetTimer(timerHandle, timerDalegate, StopTime, false);
+	FTimerDelegate timerDelegate;
+	timerDelegate.BindLambda([=]()
+	{
+		for (APawn* pawn : pawns)
+			pawn->CustomTimeDilation = 1;
+	});
+
+	FTimerHandle timerHandle;
+	InWorld->GetTimerManager().SetTimer(timerHandle, timerDelegate, StopTime, false);
+}
+
+void FHitData::EndHitted(ACharacter * InOwner)
+{
+	UCMovementComponent* movement = CHelpers::GetComponent<UCMovementComponent>(InOwner);
+
+	if (!!movement)
+		movement->Move();
 }
 
 void FHitData::PlaySoundWave(ACharacter* InOwner)
 {
-    CheckNull(Sound);
+	CheckNull(Sound);
 
-    UWorld* world = InOwner->GetWorld();
-    FVector location = InOwner->GetActorLocation();
+	UWorld* world = InOwner->GetWorld();
+	FVector location = InOwner->GetActorLocation();
 
-    UGameplayStatics::SpawnSoundAtLocation(world, Sound, location);
+	UGameplayStatics::SpawnSoundAtLocation(world, Sound, location);
 }
 
-void FHitData::PlayEffect(UWorld* InWorld, const FVector& InLocation)
+void FHitData::PlayEffect(UWorld * InWorld, const FVector & InLocation)
 {
-    CheckNull(Effect);
+	CheckNull(Effect);
 
-    FTransform transform;
-    transform.SetLocation(EffectLocation);
-    transform.SetScale3D(EffectScale);
-    transform.AddToTranslation(InLocation);
+	FTransform transform;
+	transform.SetLocation(EffectLocation);
+	transform.SetScale3D(EffectScale);
+	transform.AddToTranslation(InLocation);
 
-    CHelpers::PlayEffect(InWorld, Effect, transform);
+	CHelpers::PlayEffect(InWorld, Effect, transform);
 }
 
-void FHitData::PlayEffect(UWorld* InWorld, const FVector& InLocation, const FRotator& InRotation)
+void FHitData::PlayEffect(UWorld * InWorld, const FVector & InLocation, const FRotator & InRotation)
 {
-    CheckNull(Effect);
+	CheckNull(Effect);
 
-    FTransform transform;
-    FVector location = InLocation + InRotation.RotateVector(EffectLocation);
+	FTransform transform;
 
-    transform.SetLocation(location);
-    transform.SetScale3D(EffectScale);
+	FVector location = InLocation + InRotation.RotateVector(EffectLocation);
+	transform.SetLocation(location);
+	transform.SetScale3D(EffectScale);
 
-    CHelpers::PlayEffect(InWorld, Effect, transform);
-}
-
-void FHitData::EndHitted(ACharacter* InOwner)
-{
-    UCMovementComponent* movement = CHelpers::GetComponent<UCMovementComponent>(InOwner);
-
-    if (!!movement)
-        movement->Move();
+	CHelpers::PlayEffect(InWorld, Effect, transform);
 }

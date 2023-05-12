@@ -4,9 +4,9 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Materials/MaterialInstanceDynamic.h"
 
-void IICharacter::Change_Color(ACharacter* InCharacter, FLinearColor InColor)
+void IICharacter::Change_Color(ACharacter * InCharacter, FLinearColor InColor)
 {
-	for(UMaterialInterface* material : InCharacter->GetMesh()->GetMaterials())
+	for (UMaterialInterface* material : InCharacter->GetMesh()->GetMaterials())
 	{
 		UMaterialInstanceDynamic* instance = Cast<UMaterialInstanceDynamic>(material);
 		if (!!instance)

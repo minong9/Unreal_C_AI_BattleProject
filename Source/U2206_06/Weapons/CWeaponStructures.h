@@ -39,7 +39,7 @@ public:
 		bool bCanMove = true;
 
 	UPROPERTY(EditAnywhere)
-		bool bFixedCamera = true;
+		bool bFixedCamera;
 
 	UPROPERTY(EditAnywhere)
 		class UFXSystemAsset* Effect;
@@ -52,6 +52,7 @@ public:
 
 public:
 	void DoAction(class ACharacter* InOwner);
+
 	void PlayEffect(UWorld* InWorld, const FVector& InLocation);
 	void PlayEffect(UWorld* InWorld, const FVector& InLocation, const FRotator& InRotation);
 };
@@ -103,7 +104,6 @@ public:
 	void EndHitted(class ACharacter* InOwner);
 };
 
-
 USTRUCT()
 struct FActionDamageEvent
 	: public FDamageEvent
@@ -111,7 +111,6 @@ struct FActionDamageEvent
 	GENERATED_BODY()
 
 public:
-	//포인터로 넘기는 이유는 복사방지 겸 데이터가 안넘어 올 수도 있기 때문
 	FHitData* HitData;
 };
 

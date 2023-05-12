@@ -1,10 +1,12 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+
 using UnrealBuildTool;
 
 public class U2206_06 : ModuleRules
 {
 	public U2206_06(ReadOnlyTargetRules Target) : base(Target)
 	{
-        PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
         PublicIncludePaths.Add(ModuleDirectory);
 

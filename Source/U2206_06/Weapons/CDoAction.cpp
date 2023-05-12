@@ -3,16 +3,15 @@
 #include "CAttachment.h"
 #include "CEquipment.h"
 #include "GameFramework/Character.h"
-#include "Component/CStateComponent.h"
-#include "Component/CMovementComponent.h"
+#include "Components/CStateComponent.h"
+#include "Components/CMovementComponent.h"
 
 UCDoAction::UCDoAction()
 {
 
 }
 
-void UCDoAction::BeginPlay(ACAttachment* InAttachment, UCEquipment* InEquipment, ACharacter* InOwner,
-	const TArray<FDoActionData>& InDoActionData, const TArray<FHitData>& InHitData)
+void UCDoAction::BeginPlay(ACAttachment * InAttachment, UCEquipment * InEquipment, ACharacter * InOwner, const TArray<FDoActionData>& InDoActionData, const TArray<FHitData>& InHitData)
 {
 	OwnerCharacter = InOwner;
 	World = OwnerCharacter->GetWorld();

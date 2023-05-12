@@ -2,12 +2,12 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "Component/CStateComponent.h"
+#include "Components/CStateComponent.h"
 #include "ICharacter.h"
 #include "CEnemy.generated.h"
 
 UCLASS()
-class U2206_06_API ACEnemy
+class U2206_06_API ACEnemy 
 	: public ACharacter
 	, public IICharacter
 {
@@ -68,7 +68,7 @@ private:
 		class AActor* Causer;
 
 		struct FActionDamageEvent* Event;
-	}Damage;
+	} Damage;
 
 private:
 	FTimerHandle RestoreColor_TimerHandle;

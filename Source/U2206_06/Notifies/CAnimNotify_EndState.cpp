@@ -7,7 +7,7 @@ FString UCAnimNotify_EndState::GetNotifyName_Implementation() const
 	return "EndState";
 }
 
-void UCAnimNotify_EndState::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation)
+void UCAnimNotify_EndState::Notify(USkeletalMeshComponent * MeshComp, UAnimSequenceBase * Animation)
 {
 	Super::Notify(MeshComp, Animation);
 	CheckNull(MeshComp);
@@ -15,12 +15,11 @@ void UCAnimNotify_EndState::Notify(USkeletalMeshComponent* MeshComp, UAnimSequen
 
 	IICharacter* character = Cast<IICharacter>(MeshComp->GetOwner());
 	CheckNull(character);
-	//character->End_BackStep();
 
 	switch (StateType)
 	{
-		case EStateType::BackStep:character->End_BackStep(); break;
-		case EStateType::Hitted:character->End_Hitted(); break;
-		case EStateType::Dead:character->End_Dead(); break;
-	}
+		case EStateType::BackStep: character->End_BackStep(); break;
+		case EStateType::Hitted: character->End_Hitted(); break;
+		case EStateType::Dead: character->End_Dead(); break;
+	}	
 }

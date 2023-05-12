@@ -1,8 +1,8 @@
 #include "Weapons/CEquipment.h"
 #include "Global.h"
 #include "GameFramework/Character.h"
-#include "Component/CMovementComponent.h"
-#include "Component/CStateComponent.h"
+#include "Components/CMovementComponent.h"
+#include "Components/CStateComponent.h"
 
 void UCEquipment::BeginPlay(ACharacter* InOwner, const FEquipmentData& InData)
 {
@@ -20,7 +20,7 @@ void UCEquipment::Equip_Implementation()
 	if (Data.bCanMove == false)
 		Movement->Stop();
 
-	if(!!Data.Montage)
+	if (!!Data.Montage)
 	{
 		OwnerCharacter->PlayAnimMontage(Data.Montage, Data.PlayRate);
 	}

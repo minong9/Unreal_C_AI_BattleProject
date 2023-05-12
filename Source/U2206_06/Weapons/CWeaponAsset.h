@@ -9,11 +9,12 @@ UCLASS()
 class U2206_06_API UCWeaponAsset : public UDataAsset
 {
 	GENERATED_BODY()
-
+	
 public:
 	FORCEINLINE class ACAttachment* GetAttachment() { return Attachment; }
 	FORCEINLINE class UCEquipment* GetEquipment() { return Equipment; }
 	FORCEINLINE class UCDoAction* GetDoAction() { return DoAction; }
+	FORCEINLINE class UCSubAction* GetSubAction() { return SubAction; }
 
 private:
 	UPROPERTY(EditAnywhere)
@@ -32,7 +33,10 @@ private:
 		TArray<FDoActionData> DoActionDatas;
 
 	UPROPERTY(EditAnywhere)
-		TArray<FHitData> FHitDatas;
+		TArray<FHitData> HitDatas;
+
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<class UCSubAction> SubActionClass;
 
 public:
 	UCWeaponAsset();
@@ -41,7 +45,7 @@ public:
 
 private:
 	UPROPERTY()
-		class ACAttachment* Attachment;	//직렬화를 해서 가비지컬렉터에 의해 자동으로 없어지지 않도록함
+		class ACAttachment* Attachment;
 
 	UPROPERTY()
 		class UCEquipment* Equipment;
@@ -49,8 +53,12 @@ private:
 	UPROPERTY()
 		class UCDoAction* DoAction;
 
+	UPROPERTY()
+		class UCSubAction* SubAction;
+
+
 #if WITH_EDITOR
-	void PostEditChangeChainProperty(FPropertyChangedChainEvent& PropertyChangedEvent) override;
-#endif
+	void PostEditChangeChainProperty(struct FPropertyChangedChainEvent& PropertyChangedEvent) override;
+#endif //WITH_EDITOR
 
 };

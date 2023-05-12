@@ -20,8 +20,14 @@ private:
 
 private:
 	static const FName StyleSetName;
+
+private:
 	TSharedPtr<class FSlateStyleSet> StyleSet;
 
 public:
 	FSlateIcon ToolBar_Icon;
+	TSharedPtr<struct FSlateImageBrush> Array_Image;
+
+public:
+	FVector2D DesiredWidth = FVector2D(250, 1000);
 };

@@ -8,12 +8,11 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FEquipmentBeginEquip);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FEquipmentUnequip);
 
-
 UCLASS()
 class U2206_06_API UCEquipment : public UObject
 {
 	GENERATED_BODY()
-
+	
 public:
 	void BeginPlay(class ACharacter* InOwner, const FEquipmentData& InData);
 
@@ -38,7 +37,6 @@ public:
 	FEquipmentBeginEquip OnEquipmentBeginEquip;
 	FEquipmentUnequip OnEquipmentUnequip;
 
-
 private:
 	class UCMovementComponent* Movement;
 	class UCStateComponent* State;
@@ -50,5 +48,4 @@ private:
 private:
 	bool bBeginEquip;
 	bool bEquipped;
-	
 };

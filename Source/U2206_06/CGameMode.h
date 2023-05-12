@@ -4,13 +4,11 @@
 #include "GameFramework/GameModeBase.h"
 #include "CGameMode.generated.h"
 
-
 UCLASS()
 class U2206_06_API ACGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
-
+	
 public:
 	ACGameMode();
-	
 };

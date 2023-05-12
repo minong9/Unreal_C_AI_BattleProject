@@ -1,10 +1,10 @@
 #include "SEquipmentData.h"
+#include "SWeaponCheckBoxes.h"
 
 #include "IPropertyUtilities.h"
 #include "IDetailPropertyRow.h"
 #include "IDetailChildrenBuilder.h"
 #include "DetailWidgetRow.h"
-#include "SWeaponCheckBoxes.h"
 
 TSharedPtr<class SWeaponCheckBoxes> SEquipmentData::CheckBoxes = nullptr;
 
@@ -13,7 +13,7 @@ TSharedRef<IPropertyTypeCustomization> SEquipmentData::MakeInstance()
 	return MakeShareable(new SEquipmentData());
 }
 
-TSharedPtr<SWeaponCheckBoxes> SEquipmentData::CreateCheckBoxes()
+TSharedPtr<class SWeaponCheckBoxes> SEquipmentData::CreateCheckBoxes()
 {
 	if (CheckBoxes.IsValid())
 	{
@@ -26,17 +26,16 @@ TSharedPtr<SWeaponCheckBoxes> SEquipmentData::CreateCheckBoxes()
 
 void SEquipmentData::CustomizeHeader(TSharedRef<IPropertyHandle> InPropertyHandle, FDetailWidgetRow& InHeaderRow, IPropertyTypeCustomizationUtils& InCustomizationUtils)
 {
-	if(CheckBoxes.IsValid() == false)
+	if (CheckBoxes.IsValid() == false)
 	{
-		//해결 방법은 체크박스를 안쓰고 기본으로 씀
 		InHeaderRow
 		.NameContent()
 		[
 			InPropertyHandle->CreatePropertyNameWidget()
 		]
 		.ValueContent()
-		.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
-		.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))
+			.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
+			.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))
 		[
 			InPropertyHandle->CreatePropertyValueWidget()
 		];
@@ -55,24 +54,22 @@ void SEquipmentData::CustomizeHeader(TSharedRef<IPropertyHandle> InPropertyHandl
 	.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
 	.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))
 	[
-		CheckBoxes->Draw()	//콘텐츠 영역에 바로 추가해서 리턴해주려고
+		CheckBoxes->Draw()
 	];
 }
 
-//InHeaderRow.GetPropertyHandle[0] == InPropertyHandle : 부모의 것임
 void SEquipmentData::CustomizeChildren(TSharedRef<IPropertyHandle> InPropertyHandle, IDetailChildrenBuilder& InChildBuilder, IPropertyTypeCustomizationUtils& InuCustomizationUtils)
 {
-	if(CheckBoxes.IsValid() == false)
+	if (CheckBoxes.IsValid() == false)
 	{
 		uint32 number = 0;
 		InPropertyHandle->GetNumChildren(number);
 
-		for(uint32 i = 0; i < number; i++)
+		for (uint32 i = 0; i < number; i++)
 		{
-			TSharedPtr<IPropertyHandle> handle = InPropertyHandle->GetChildHandle(i);	//번호를 넣으면 해당 것을 리턴해 줌
-			//빌더라는 것은 모양을 넣어줄 때 사용함
+			TSharedPtr<IPropertyHandle> handle = InPropertyHandle->GetChildHandle(i);
 			IDetailPropertyRow& row = InChildBuilder.AddProperty(handle.ToSharedRef());
-
+			
 			TSharedPtr<SWidget> name;
 			TSharedPtr<SWidget> value;
 
@@ -84,15 +81,15 @@ void SEquipmentData::CustomizeChildren(TSharedRef<IPropertyHandle> InPropertyHan
 				name.ToSharedRef()
 			]
 			.ValueContent()
-			.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
-			.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))
+				.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
+				.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))
 			[
 				value.ToSharedRef()
 			];
 		}//for(i)
-		return;
-	}
 
-	//SWeaponCheckBoxes::DrawProperties 안으로 위 내용 옮김
+		return;
+	}	
+
 	CheckBoxes->DrawProperties(InPropertyHandle, &InChildBuilder);
 }

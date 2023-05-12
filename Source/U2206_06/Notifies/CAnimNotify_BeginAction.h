@@ -8,7 +8,7 @@ UCLASS()
 class U2206_06_API UCAnimNotify_BeginAction : public UAnimNotify
 {
 	GENERATED_BODY()
-
+	
 public:
 	FString GetNotifyName_Implementation() const override;
 

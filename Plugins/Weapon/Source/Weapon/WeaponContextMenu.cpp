@@ -7,22 +7,14 @@ FWeaponContextMenu::FWeaponContextMenu(EAssetTypeCategories::Type InType)
 	Category = InType;
 }
 
-//데이터에셋 파일 클릭해서 여는 것
-void FWeaponContextMenu::OpenAssetEditor(const TArray<UObject*>& InObjects,
-	TSharedPtr<IToolkitHost> EditWithinLevelEditor)
+void FWeaponContextMenu::OpenAssetEditor(const TArray<UObject*>& InObjects, TSharedPtr<class IToolkitHost> EditWithinLevelEditor)
 {
-	//원래 디자인
-	{
-		//FSimpleAssetEditor::CreateEditor(EToolkitMode::Standalone, EditWithinLevelEditor, InObjects);
-	}
+	//FSimpleAssetEditor::CreateEditor(EToolkitMode::Standalone, EditWithinLevelEditor, InObjects);
 
-	//우리가 커스텀한 디자인
-	{
-		if (InObjects.Num() < 1)
-			return;
+	if (InObjects.Num() < 1)
+		return;
 
-		FWeaponAssetEditor::OpenWindow(InObjects[0]->GetName());
-	}
+	FWeaponAssetEditor::OpenWindow(InObjects[0]->GetName());
 }
 
 FText FWeaponContextMenu::GetName() const
@@ -30,7 +22,7 @@ FText FWeaponContextMenu::GetName() const
 	return FText::FromString("DataAsset");
 }
 
-UClass* FWeaponContextMenu::GetSupportedClass() const
+UClass * FWeaponContextMenu::GetSupportedClass() const
 {
 	return UCWeaponAsset::StaticClass();
 }

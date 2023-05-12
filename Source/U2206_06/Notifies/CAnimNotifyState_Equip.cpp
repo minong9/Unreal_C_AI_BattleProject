@@ -1,6 +1,6 @@
-#include "CAnimNotifyState_Equip.h"
+#include "Notifies/CAnimNotifyState_Equip.h"
 #include "Global.h"
-#include "Component/CWeaponComponent.h"
+#include "Components/CWeaponComponent.h"
 #include "Weapons/CEquipment.h"
 
 FString UCAnimNotifyState_Equip::GetNotifyName_Implementation() const
@@ -8,7 +8,7 @@ FString UCAnimNotifyState_Equip::GetNotifyName_Implementation() const
 	return "Equip";
 }
 
-void UCAnimNotifyState_Equip::NotifyBegin(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation, float TotalDuration)
+void UCAnimNotifyState_Equip::NotifyBegin(USkeletalMeshComponent * MeshComp, UAnimSequenceBase * Animation, float TotalDuration)
 {
 	Super::NotifyBegin(MeshComp, Animation, TotalDuration);
 	CheckNull(MeshComp);
@@ -21,10 +21,9 @@ void UCAnimNotifyState_Equip::NotifyBegin(USkeletalMeshComponent* MeshComp, UAni
 	weapon->GetEquipment()->Begin_Equip();
 }
 
-void UCAnimNotifyState_Equip::NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation)
+void UCAnimNotifyState_Equip::NotifyEnd(USkeletalMeshComponent * MeshComp, UAnimSequenceBase * Animation)
 {
 	Super::NotifyEnd(MeshComp, Animation);
-
 	CheckNull(MeshComp);
 	CheckNull(MeshComp->GetOwner());
 
@@ -34,3 +33,4 @@ void UCAnimNotifyState_Equip::NotifyEnd(USkeletalMeshComponent* MeshComp, UAnimS
 
 	weapon->GetEquipment()->End_Equip();
 }
+

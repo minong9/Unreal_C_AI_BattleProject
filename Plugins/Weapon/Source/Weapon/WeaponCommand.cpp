@@ -1,11 +1,10 @@
 ﻿#include "WeaponCommand.h"
 #include "WeaponStyle.h"
-
 #include "LevelEditor.h"
 #include "WeaponAssetEditor.h"
 
 FWeaponCommand::FWeaponCommand()
-	: TCommands("Toolbar_Button", FText::FromString(""), NAME_None, FEditorStyle::GetStyleSetName())
+	: TCommands("Toolbar_Buttons", FText::FromString(""), NAME_None, FEditorStyle::GetStyleSetName())
 {
 	Command = MakeShareable(new FUICommandList());
 }
@@ -25,6 +24,7 @@ void FWeaponCommand::Startup()
 
 	Extender = MakeShareable(new FExtender());
 
+
 	FToolBarExtensionDelegate toolbar = FToolBarExtensionDelegate::CreateRaw(this, &FWeaponCommand::AddToolBar);
 	Extender->AddToolBarExtension("Settings", EExtensionHook::After, Command, toolbar);
 
@@ -38,21 +38,22 @@ void FWeaponCommand::RegisterCommands()
 	UI_COMMAND(Id, "Weapon", "", EUserInterfaceActionType::Button, FInputChord());
 #undef LOCTEXT_NAMESPACE
 
+	
 	FExecuteAction action;
 	action.BindRaw(this, &FWeaponCommand::OnClicked);
 
 	Command->MapAction(Id, action, FCanExecuteAction());
 }
 
-void FWeaponCommand::AddToolBar(FToolBarBuilder& InBuilder)
+void FWeaponCommand::AddToolBar(FToolBarBuilder & InBuilder)
 {
 	FString name = TEXT("웨폰");
 
 	InBuilder.AddSeparator();
-	InBuilder.AddToolBarButton(Id, NAME_None, FText::FromString(name), /*FText::FromString("Weapon"),*/ FText::FromString("Weapon Asset Editor"), FWeaponStyle::Get()->ToolBar_Icon, NAME_None);
+	InBuilder.AddToolBarButton(Id, NAME_None, FText::FromString(name), FText::FromString("Weapon Asset Editor"), FWeaponStyle::Get()->ToolBar_Icon, NAME_None);
 }
 
 void FWeaponCommand::OnClicked()
 {
-	FWeaponAssetEditor::OpenWindow(); //어떤 에셋을 선택할지 모르기 때문에 () <- 안을 비워둠
+	FWeaponAssetEditor::OpenWindow();
 }

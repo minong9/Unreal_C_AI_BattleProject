@@ -1,5 +1,6 @@
 #include "SHitData.h"
 #include "SWeaponCheckBoxes.h"
+#include "WeaponStyle.h"
 
 #include "DetailWidgetRow.h"
 #include "IDetailChildrenBuilder.h"
@@ -38,33 +39,43 @@ void SHitData::CustomizeHeader(TSharedRef<IPropertyHandle> InPropertyHandle, FDe
 		int32 index = InPropertyHandle->GetIndexInArray();
 		CheckBoxes[index]->SetUtilities(InCustomizationUtils.GetPropertyUtilities());
 
+		FString name = InPropertyHandle->GetPropertyDisplayName().ToString();
+		name = "Hit Data - " + name;
+
 		InHeaderRow
-		.NameContent()
-		[
-			InPropertyHandle->CreatePropertyNameWidget()
-		]
+			.NameContent()
+			[
+				SNew(SBorder)
+				.BorderImage(FWeaponStyle::Get()->Array_Image.Get())
+				[
+					InPropertyHandle->CreatePropertyNameWidget(FText::FromString(name))
+				]
+			]
 		.ValueContent()
-		.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
-		.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))
+		//.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
+		//.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))
+		.MinDesiredWidth(FWeaponStyle::Get()->DesiredWidth.X)
+		.MaxDesiredWidth(FWeaponStyle::Get()->DesiredWidth.Y)
 		[
-			CheckBoxes[index]->Draw()	//콘텐츠 영역에 바로 추가해서 리턴해주려고
+			CheckBoxes[index]->Draw(true)
 		];
 
 		return;
 	}
 
-	//기본형
 	InHeaderRow
-	.NameContent()
-	[
-		InPropertyHandle->CreatePropertyNameWidget()
-	]
+		.NameContent()
+		[
+			InPropertyHandle->CreatePropertyNameWidget()
+		]
 	.ValueContent()
-	.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
-	.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))
-	[
-		InPropertyHandle->CreatePropertyValueWidget()
-	];
+		.MinDesiredWidth(FWeaponStyle::Get()->DesiredWidth.X)
+		.MaxDesiredWidth(FWeaponStyle::Get()->DesiredWidth.Y)
+		/*.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
+		.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))*/
+		[
+			InPropertyHandle->CreatePropertyValueWidget()
+		];
 }
 
 void SHitData::CustomizeChildren(TSharedRef<IPropertyHandle> InPropertyHandle, IDetailChildrenBuilder& InChildBuilder, IPropertyTypeCustomizationUtils& InuCustomizationUtils)
@@ -77,14 +88,12 @@ void SHitData::CustomizeChildren(TSharedRef<IPropertyHandle> InPropertyHandle, I
 		return;
 	}
 
-	//기본형
 	uint32 number = 0;
 	InPropertyHandle->GetNumChildren(number);
 
 	for (uint32 i = 0; i < number; i++)
 	{
-		TSharedPtr<IPropertyHandle> handle = InPropertyHandle->GetChildHandle(i);	//번호를 넣으면 해당 것을 리턴해 줌
-		//빌더라는 것은 모양을 넣어줄 때 사용함
+		TSharedPtr<IPropertyHandle> handle = InPropertyHandle->GetChildHandle(i);
 		IDetailPropertyRow& row = InChildBuilder.AddProperty(handle.ToSharedRef());
 
 		TSharedPtr<SWidget> name;
@@ -93,16 +102,18 @@ void SHitData::CustomizeChildren(TSharedRef<IPropertyHandle> InPropertyHandle, I
 		row.GetDefaultWidgets(name, value);
 
 		row.CustomWidget()
-		.NameContent()
-		[
-			name.ToSharedRef()
-		]
+			.NameContent()
+			[
+				name.ToSharedRef()
+			]
 		.ValueContent()
-		.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
-		.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))
-		[
-			value.ToSharedRef()
-		];
+			.MinDesiredWidth(FWeaponStyle::Get()->DesiredWidth.X)
+			.MaxDesiredWidth(FWeaponStyle::Get()->DesiredWidth.Y)
+			//.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
+			//.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))
+			[
+				value.ToSharedRef()
+			];
 	}//for(i)
 }
 

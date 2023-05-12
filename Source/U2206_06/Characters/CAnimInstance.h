@@ -2,14 +2,14 @@
 
 #include "CoreMinimal.h"
 #include "Animation/AnimInstance.h"
-#include "Component/CWeaponComponent.h"
+#include "Components/CWeaponComponent.h"
 #include "CAnimInstance.generated.h"
 
 UCLASS()
 class U2206_06_API UCAnimInstance : public UAnimInstance
 {
 	GENERATED_BODY()
-
+	
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Animation")
 		float Speed;

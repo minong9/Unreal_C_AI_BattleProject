@@ -1,7 +1,7 @@
-C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Development\Weapon\Definitions.Weapon.h
-C:/Users/yuki/Documents/GitHub/Unreal_C_AI_BattleProject/Plugins/Weapon/Intermediate/Build/Win64/UE4Editor/Inc/Weapon/Weapon.init.gen.cpp
+C:\Users\yuki\Desktop\U2206_06 (1)\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Development\Weapon\Definitions.Weapon.h
+C:/Users/yuki/Desktop/U2206_06 (1)/Plugins/Weapon/Intermediate/Build/Win64/UE4Editor/Inc/Weapon/Weapon.init.gen.cpp
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
-C:/Users/yuki/Documents/GitHub/Unreal_C_AI_BattleProject/Plugins/Weapon/Intermediate/Build/Win64/UE4Editor/Inc/Weapon/WeaponAssetFactory.gen.cpp
-C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Source\Weapon/WeaponAssetFactory.h
-C:\Users\yuki\Documents\GitHub\Unreal_C_AI_BattleProject\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Inc\Weapon\WeaponAssetFactory.generated.h
+C:/Users/yuki/Desktop/U2206_06 (1)/Plugins/Weapon/Intermediate/Build/Win64/UE4Editor/Inc/Weapon/WeaponAssetFactory.gen.cpp
+C:\Users\yuki\Desktop\U2206_06 (1)\Plugins\Weapon\Source\Weapon/WeaponAssetFactory.h
+C:\Users\yuki\Desktop\U2206_06 (1)\Plugins\Weapon\Intermediate\Build\Win64\UE4Editor\Inc\Weapon\WeaponAssetFactory.generated.h

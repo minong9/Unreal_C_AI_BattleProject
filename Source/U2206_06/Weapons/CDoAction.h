@@ -9,10 +9,10 @@ UCLASS(Abstract, NotBlueprintable)
 class U2206_06_API UCDoAction : public UObject
 {
 	GENERATED_BODY()
-
+	
 public:
 	UCDoAction();
-
+	
 	virtual void BeginPlay
 	(
 		class ACAttachment* InAttachment,
@@ -29,17 +29,16 @@ public:
 
 public:
 	UFUNCTION()
-		virtual void OnAttachmentBeginCollision() {}
+		virtual void OnAttachmentBeginCollision() { }
 
 	UFUNCTION()
-		virtual void OnAttachmentEndCollision() {}
+		virtual void OnAttachmentEndCollision() { }
 
 	UFUNCTION()
-		virtual void OnAttachmentBeginOverlap(class ACharacter* InAttacker, AActor* InAttackCauser, class ACharacter* InOther) {}
+		virtual void OnAttachmentBeginOverlap(class ACharacter* InAttacker, AActor* InAttackCuaser, class ACharacter* InOther) { }
 
 	UFUNCTION()
-		virtual void OnAttachmentEndOverlap(class ACharacter* InAttacker, class ACharacter* InOther) {}
-
+		virtual void OnAttachmentEndOverlap(class ACharacter* InAttacker, class ACharacter* InOther) { }
 
 protected:
 	bool bBeginAction;
@@ -52,6 +51,4 @@ protected:
 
 	TArray<FDoActionData> DoActionDatas;
 	TArray<FHitData> HitDatas;
-
-
 };

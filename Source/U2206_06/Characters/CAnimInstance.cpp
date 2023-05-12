@@ -17,7 +17,6 @@ void UCAnimInstance::NativeBeginPlay()
 void UCAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 {
 	Super::NativeUpdateAnimation(DeltaSeconds);
-
 	CheckNull(OwnerCharacter);
 
 	Speed = OwnerCharacter->GetVelocity().Size2D();

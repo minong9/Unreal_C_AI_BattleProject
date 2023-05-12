@@ -7,9 +7,10 @@ class WEAPON_API SWeaponCheckBoxes
 {
 public:
 	void AddProperties(TSharedPtr<IPropertyHandle> InHandle);
-	void SetUtilities(TSharedPtr < class IPropertyUtilities> InUtilities);
+	
+	void SetUtilities(TSharedPtr<class IPropertyUtilities> InUtilities);
 
-	TSharedRef<class SWidget> Draw();
+	TSharedRef<class SWidget> Draw(bool bBackground = false);
 	void DrawProperties(TSharedRef<IPropertyHandle> InPropertyHandle, class IDetailChildrenBuilder* InChildBuilder);
 
 private:
@@ -25,10 +26,9 @@ private:
 	void OnCheckStateChanged(ECheckBoxState InState, int32 InIndex);
 
 private:
-	TSharedPtr < class IPropertyUtilities> Utilities;
+	TSharedPtr<class IPropertyUtilities> Utilities;
 
 private:
-	// 내부적으로만 사용하는 것엔 Internal 붙여줌
 	struct FInternalData
 	{
 		bool bChecked;
@@ -42,9 +42,6 @@ private:
 
 			Name = Handle->GetPropertyDisplayName().ToString();
 		}
-
 	};
 	TArray<FInternalData> InternalDatas;
 };
-
-

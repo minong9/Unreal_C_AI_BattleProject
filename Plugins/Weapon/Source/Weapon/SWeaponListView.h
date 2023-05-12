@@ -12,7 +12,7 @@ struct FWeaponRowData
 
 	FWeaponRowData()
 	{
-		
+
 	}
 
 	FWeaponRowData(int32 InIndex, FString InName, class UCWeaponAsset* InAsset)
@@ -28,11 +28,9 @@ struct FWeaponRowData
 };
 
 typedef TSharedPtr<FWeaponRowData> FWeaponRowDataPtr;
-typedef SListView<FWeaponRowDataPtr> SWeaponListViewRow;	//실제 한줄을 보여줄 객체
-
+typedef SListView<FWeaponRowDataPtr> SWeaponListViewRow;
 
 ///////////////////////////////////////////////////////////////////////////////
-
 
 class WEAPON_API SWeaponTableRow
 	: public SMultiColumnTableRow<FWeaponRowDataPtr>
@@ -52,9 +50,7 @@ private:
 	FWeaponRowDataPtr Row;
 };
 
-
 ///////////////////////////////////////////////////////////////////////////////
-
 
 DECLARE_DELEGATE_OneParam(FOnWeaponListViewSelectedItem, FWeaponRowDataPtr);
 

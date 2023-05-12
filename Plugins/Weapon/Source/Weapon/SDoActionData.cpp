@@ -1,5 +1,6 @@
 #include "SDoActionData.h"
 #include "SWeaponCheckBoxes.h"
+#include "WeaponStyle.h"
 
 #include "DetailWidgetRow.h"
 #include "IDetailChildrenBuilder.h"
@@ -9,59 +10,70 @@ TArray<TSharedPtr<class SWeaponCheckBoxes>> SDoActionData::CheckBoxes;
 
 TSharedRef<IPropertyTypeCustomization> SDoActionData::MakeInstance()
 {
-    return MakeShareable(new SDoActionData());
+	return MakeShareable(new SDoActionData());
 }
 
 TSharedPtr<SWeaponCheckBoxes> SDoActionData::AddCheckBoxes()
 {
-    TSharedPtr<SWeaponCheckBoxes> checkBoxes = MakeShareable(new SWeaponCheckBoxes());
-    int32 index = CheckBoxes.Add(checkBoxes);
+	TSharedPtr<SWeaponCheckBoxes> checkBoxes = MakeShareable(new SWeaponCheckBoxes());
+	int32 index = CheckBoxes.Add(checkBoxes);
 
-    return CheckBoxes[index];
+	return CheckBoxes[index];
 }
 
 void SDoActionData::EmptyCheckBoxes()
 {
-    for (TSharedPtr<SWeaponCheckBoxes> ptr : CheckBoxes)
-    {
-        if (ptr.IsValid())
-            ptr.Reset();
-    }
+	for (TSharedPtr<SWeaponCheckBoxes> ptr : CheckBoxes)
+	{
+		if (ptr.IsValid())
+			ptr.Reset();
+	}
 
-    CheckBoxes.Empty();
+	CheckBoxes.Empty();
 }
 
 void SDoActionData::CustomizeHeader(TSharedRef<IPropertyHandle> InPropertyHandle, FDetailWidgetRow& InHeaderRow, IPropertyTypeCustomizationUtils& InCustomizationUtils)
 {
-    if(CheckBoxes.Num() > 0)
-    {
+	if (CheckBoxes.Num() > 0)
+	{
 		int32 index = InPropertyHandle->GetIndexInArray();
 		CheckBoxes[index]->SetUtilities(InCustomizationUtils.GetPropertyUtilities());
 
+		FString name = InPropertyHandle->GetPropertyDisplayName().ToString();
+		name = "DoAction Data - " + name;
+
 		InHeaderRow
-    	.NameContent()
-    	[
-    		InPropertyHandle->CreatePropertyNameWidget()
-		]
+			.NameContent()
+			[
+				SNew(SBorder)
+				.BorderImage(FWeaponStyle::Get()->Array_Image.Get())
+				[
+					InPropertyHandle->CreatePropertyNameWidget(FText::FromString(name))
+				]
+				
+			]
 		.ValueContent()
-    	.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
-    	.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))
-    	[
-    		CheckBoxes[index]->Draw()	//콘텐츠 영역에 바로 추가해서 리턴해주려고
-		];
+		//.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
+		//.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))
+		.MinDesiredWidth(FWeaponStyle::Get()->DesiredWidth.X)
+		.MaxDesiredWidth(FWeaponStyle::Get()->DesiredWidth.Y)
+			[
+				CheckBoxes[index]->Draw(true)
+			];
 
-    	return;
-    }
+		return;
+	}
 
-    //기본형
-    InHeaderRow
+	InHeaderRow
 	.NameContent()
 	[
 		InPropertyHandle->CreatePropertyNameWidget()
 	]
-    .ValueContent()
-	.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
-	.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))
+	.ValueContent()
+	//.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
+	//.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))
+	.MinDesiredWidth(FWeaponStyle::Get()->DesiredWidth.X)
+	.MaxDesiredWidth(FWeaponStyle::Get()->DesiredWidth.Y)
 	[
 		InPropertyHandle->CreatePropertyValueWidget()
 	];
@@ -69,22 +81,20 @@ void SDoActionData::CustomizeHeader(TSharedRef<IPropertyHandle> InPropertyHandle
 
 void SDoActionData::CustomizeChildren(TSharedRef<IPropertyHandle> InPropertyHandle, IDetailChildrenBuilder& InChildBuilder, IPropertyTypeCustomizationUtils& InuCustomizationUtils)
 {
-	if(CheckBoxes.Num() > 0)
+	if (CheckBoxes.Num() > 0)
 	{
 		int32 index = InPropertyHandle->GetIndexInArray();
 		CheckBoxes[index]->DrawProperties(InPropertyHandle, &InChildBuilder);
 
-        return;
+		return;
 	}
 
-	//기본형
 	uint32 number = 0;
 	InPropertyHandle->GetNumChildren(number);
 
 	for (uint32 i = 0; i < number; i++)
 	{
-		TSharedPtr<IPropertyHandle> handle = InPropertyHandle->GetChildHandle(i);	//번호를 넣으면 해당 것을 리턴해 줌
-		//빌더라는 것은 모양을 넣어줄 때 사용함
+		TSharedPtr<IPropertyHandle> handle = InPropertyHandle->GetChildHandle(i);
 		IDetailPropertyRow& row = InChildBuilder.AddProperty(handle.ToSharedRef());
 
 		TSharedPtr<SWidget> name;
@@ -98,8 +108,10 @@ void SDoActionData::CustomizeChildren(TSharedRef<IPropertyHandle> InPropertyHand
 			name.ToSharedRef()
 		]
 		.ValueContent()
-		.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
-		.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))
+		//.MinDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MinDesiredSlotWidth"))
+		//.MaxDesiredWidth(FEditorStyle::GetFloat("StandardDialog.MaxDesiredSlotWidth"))
+		.MinDesiredWidth(FWeaponStyle::Get()->DesiredWidth.X)
+		.MaxDesiredWidth(FWeaponStyle::Get()->DesiredWidth.Y)
 		[
 			value.ToSharedRef()
 		];

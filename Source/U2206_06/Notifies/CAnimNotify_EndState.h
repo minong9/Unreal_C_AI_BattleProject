@@ -2,14 +2,14 @@
 
 #include "CoreMinimal.h"
 #include "Animation/AnimNotifies/AnimNotify.h"
-#include "Component/CStateComponent.h"
+#include "Components/CStateComponent.h"
 #include "CAnimNotify_EndState.generated.h"
 
 UCLASS()
 class U2206_06_API UCAnimNotify_EndState : public UAnimNotify
 {
 	GENERATED_BODY()
-
+	
 private:
 	UPROPERTY(EditAnywhere, Category = "Type")
 		EStateType StateType;

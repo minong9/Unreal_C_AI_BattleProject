@@ -7,7 +7,7 @@ class WEAPON_API SWeaponDetailsView
 	: public IDetailCustomization
 {
 public:
-	static TSharedRef<IDetailCustomization> MakeInstance();	//창이 열릴때마다
+	static TSharedRef<IDetailCustomization> MakeInstance();
 	virtual void CustomizeDetails(IDetailLayoutBuilder& DetailBuilder) override;
 
 public:
@@ -16,5 +16,4 @@ public:
 
 private:
 	static bool RefreshByCheckBoxes;
-
 };

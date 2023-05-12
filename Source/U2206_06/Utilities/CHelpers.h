@@ -130,25 +130,24 @@ public:
 		FRotator rotation = FRotator(InTransform.GetRotation());
 		FVector scale = InTransform.GetScale3D();
 
-		if(!!InMesh)
+		if (!!InMesh)
 		{
-			if(!!particle)
+			if (!!particle)
 			{
 				UGameplayStatics::SpawnEmitterAttached(particle, InMesh, InSocketName, location, rotation, scale);
 
 				return;
 			}
 
-			if(!!niagara)
+			if (!!niagara)
 			{
-				UNiagaraFunctionLibrary::SpawnSystemAttached(niagara, InMesh, InSocketName, location, rotation, scale, EAttachLocation::KeepRelativeOffset, true, ENCPoolMethod::None, true, true);
+				UNiagaraFunctionLibrary::SpawnSystemAttached(niagara, InMesh, InSocketName, location, rotation, scale, EAttachLocation::KeepRelativeOffset, true, ENCPoolMethod::None);
 
 				return;
 			}
-
 		}
 
-		if(!!particle)
+		if (!!particle)
 		{
 			UGameplayStatics::SpawnEmitterAtLocation(InWorld, particle, InTransform);
 

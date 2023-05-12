@@ -1,8 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "FrameWork/Commands/Commands.h" //싱글톤, 스태틱 이용하기 위해 사용하는 방법
-
+#include "Framework/Commands/Commands.h"
 
 class WEAPON_API FWeaponCommand
 	: public TCommands<FWeaponCommand>
@@ -12,7 +11,7 @@ public:
 	~FWeaponCommand();
 
 	void Startup();
-
+	
 public:
 	void RegisterCommands() override;
 

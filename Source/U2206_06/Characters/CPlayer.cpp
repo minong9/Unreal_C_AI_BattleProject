@@ -4,9 +4,9 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
-#include "Component/CWeaponComponent.h"
-#include "Component/CMovementComponent.h"
-#include "Component/CMontagesComponent.h"
+#include "Components/CWeaponComponent.h"
+#include "Components/CMovementComponent.h"
+#include "Components/CMontagesComponent.h"
 #include "Components/InputComponent.h"
 
 ACPlayer::ACPlayer()
@@ -27,10 +27,10 @@ ACPlayer::ACPlayer()
 	CHelpers::GetAsset<USkeletalMesh>(&mesh, "SkeletalMesh'/Game/Character/Mesh/SK_Mannequin.SK_Mannequin'");
 	GetMesh()->SetSkeletalMesh(mesh);
 
-	//애님인스턴스 애니메이션 블루프린트
 	TSubclassOf<UCAnimInstance> animInstance;
 	CHelpers::GetClass<UCAnimInstance>(&animInstance, "AnimBlueprint'/Game/ABP_Character.ABP_Character_C'");
 	GetMesh()->SetAnimClass(animInstance);
+
 
 	SpringArm->SetRelativeLocation(FVector(0, 0, 140));
 	SpringArm->SetRelativeRotation(FRotator(0, 90, 0));
@@ -39,31 +39,7 @@ ACPlayer::ACPlayer()
 	SpringArm->bUsePawnControlRotation = true;
 	SpringArm->bEnableCameraLag = true;
 
-	State->OnStateTypeChanged.AddDynamic(this, &ACPlayer::OnStateTypeChanged);
-
 	GetCharacterMovement()->RotationRate = FRotator(0, 720, 0);
-}
-
-void ACPlayer::OnStateTypeChanged(EStateType InPrevType, EStateType InNewType)
-{
-	switch (InNewType)
-	{
-		case EStateType::BackStep:BackStep(); break;
-	}
-}
-
-void ACPlayer::BackStep()
-{
-	Movement->EnableControlRotation();
-
-	Montages->PlayBackStepMode();
-}
-
-void ACPlayer::End_BackStep()
-{
-	Movement->DisableControlRotation();
-
-	State->SetIdleMode();
 }
 
 void ACPlayer::BeginPlay()
@@ -89,13 +65,15 @@ void ACPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAction("Sprint", EInputEvent::IE_Released, Movement, &UCMovementComponent::OnRun);
 
 	PlayerInputComponent->BindAction("Avoid", EInputEvent::IE_Pressed, this, &ACPlayer::OnAvoid);
-
 	PlayerInputComponent->BindAction("Action", EInputEvent::IE_Pressed, Weapon, &UCWeaponComponent::DoAction);
+
+	PlayerInputComponent->BindAction("SubAction", EInputEvent::IE_Pressed, Weapon, &UCWeaponComponent::SubAction_Pressed);
+	PlayerInputComponent->BindAction("SubAction", EInputEvent::IE_Released, Weapon, &UCWeaponComponent::SubAction_Released);
+
 
 	PlayerInputComponent->BindAction("Fist", EInputEvent::IE_Pressed, Weapon, &UCWeaponComponent::SetFistMode);
 	PlayerInputComponent->BindAction("Sword", EInputEvent::IE_Pressed, Weapon, &UCWeaponComponent::SetSwordMode);
 	PlayerInputComponent->BindAction("Hammer", EInputEvent::IE_Pressed, Weapon, &UCWeaponComponent::SetHammerMode);
-
 }
 
 void ACPlayer::OnAvoid()
@@ -106,5 +84,27 @@ void ACPlayer::OnAvoid()
 	CheckTrue(InputComponent->GetAxisValue("MoveForward") >= 0.0f);
 
 	State->SetBackStepMode();
+}
+
+void ACPlayer::OnStateTypeChanged(EStateType InPrevType, EStateType InNewType)
+{
+	switch (InNewType)
+	{
+		case EStateType::BackStep: BackStep(); break;
+	}
+}
+
+void ACPlayer::BackStep()
+{
+	Movement->EnableControlRotation();
+
+	Montages->PlayBackStepMode();
+}
+
+void ACPlayer::End_BackStep()
+{
+	Movement->DisableControlRotation();
+
+	State->SetIdleMode();
 }
 
