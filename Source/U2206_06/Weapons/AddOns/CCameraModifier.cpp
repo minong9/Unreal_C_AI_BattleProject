@@ -7,16 +7,9 @@ void UCCameraModifier::ModifyCamera(float DeltaTime, FVector ViewLocation, FRota
 
 
 	NewViewLocation = Location;
+	NewViewRotation = Rotation;
 }
 
-bool UCCameraModifier::ProcessViewRotation(AActor* ViewTarget, float DeltaTime, FRotator& OutViewRotation,
-	FRotator& OutDeltaRot)
-{
-	bool b = Super::ProcessViewRotation(ViewTarget, DeltaTime, OutViewRotation, OutDeltaRot);
 
-	CLog::Log(ViewTarget->GetActorLocation());
-
-	return b;
-}
 
 

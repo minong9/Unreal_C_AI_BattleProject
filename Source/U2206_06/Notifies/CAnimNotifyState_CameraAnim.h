@@ -27,7 +27,7 @@ private:
 		TSoftObjectPtr<class ACharacter> Target;	//간접프로퍼티 참조, 애셋 로드 시점을 관여함
 
 	UPROPERTY(EditAnywhere, Category = "Camera")
-		FVector LocationOffset = FVector::ZeroVector;
+		FVector LocationOffset = FVector(-400, 0, 90);
 
 	UPROPERTY(EditAnywhere, Category = "Camera")
 		float PitchOffset = -15;

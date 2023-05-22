@@ -36,11 +36,13 @@ void UCAnimNotifyState_CameraAnim::NotifyBegin(USkeletalMeshComponent* MeshComp,
 	FVector location = target->GetActorLocation();
 
 	float yaw = controller->GetControlRotation().Yaw;
-
-	location + FRotator(0, yaw, 0).RotateVector(LocationOffset);
+	location += FRotator(0, yaw, 0).RotateVector(LocationOffset);
 
 	Modifier->SetLocation(location);
+	Modifier->SetRotation(FRotator(PitchOffset, yaw, 0));
 
+	//카메라 정렬
+	controller->SetControlRotation(FRotator(0, controller->GetControlRotation().Yaw, 0));
 	controller->PlayerCameraManager->PlayCameraAnim(CameraAnim, PlayRatio, 1, BlendInTime, BlendOutTime, false, false, 0, ECameraShakePlaySpace::UserDefined, controller->GetControlRotation());
 }
 

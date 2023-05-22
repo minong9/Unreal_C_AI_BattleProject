@@ -5,6 +5,7 @@
 #include "Components/CMovementComponent.h"
 #include "Weapons/CAttachment.h"
 #include "Weapons/CDoAction.h"
+#include "Weapons/AddOns/CGhostTrail.h"
 
 
 void UCSubAction_Fist::Pressed()
@@ -17,6 +18,8 @@ void UCSubAction_Fist::Pressed()
 	State->SetActionMode();
 	State->OnSubActionMode();
 
+	GhostTrail = CHelpers::Play_GhostTrail(GhostTrailClass, Owner);
+
 	ActionData.DoAction(Owner);
 }
 
@@ -24,12 +27,22 @@ void UCSubAction_Fist::Begin_SubAction_Implementation()
 {
 	Super::Begin_SubAction_Implementation();
 
+	Attachment->OnAttachmentEndCollision.Remove(DoAction, "OnAttachmentEndCollision");
+	Attachment->OnAttachmentBeginOverlap.Remove(DoAction, "OnAttachmentBeginOverlap");
 
+	Attachment->OnAttachmentEndCollision.AddDynamic(this, &UCSubAction_Fist::OnAttachmentEndCollision);
+	Attachment->OnAttachmentBeginOverlap.AddDynamic(this, &UCSubAction_Fist::OnAttachmentBeginOverlap);
 }
 
 void UCSubAction_Fist::End_SubAction_Implementation()
 {
 	Super::End_SubAction_Implementation();
+
+	Attachment->OnAttachmentEndCollision.Remove(this, "OffAttachmentCollision");
+	Attachment->OnAttachmentBeginOverlap.Remove(this, "OnAttachmentBeginOverlap");
+
+	Attachment->OnAttachmentEndCollision.AddDynamic(DoAction, &UCDoAction::OnAttachmentEndCollision);
+	Attachment->OnAttachmentBeginOverlap.AddDynamic(DoAction, &UCDoAction::OnAttachmentBeginOverlap);
 
 	State->SetIdleMode();
 	State->OffSubActionMode();
@@ -38,9 +51,11 @@ void UCSubAction_Fist::End_SubAction_Implementation()
 	Movement->DisableFixedCamera();
 
 	HitIndex = 0;
+
+	GhostTrail->Destroy();
 }
 
-void UCSubAction_Fist::OffAttachmentCollision()
+void UCSubAction_Fist::OnAttachmentEndCollision()
 {
 	//중복 충돌방지를 위해 비워둠
 	Hitted.Empty();
