@@ -1,10 +1,10 @@
 #include "WeaponAssetEditor.h"
 #include "Weapons/CWeaponAsset.h"
-#include "SWeaponListView.h"
+#include "SWeaponLeftArea.h"
 #include "SWeaponDetailsView.h"
 
 const FName FWeaponAssetEditor::EditorName = "WeaponAssetEditor";
-const FName FWeaponAssetEditor::ListViewTabId = "ListView";
+const FName FWeaponAssetEditor::LeftAreaTabId = "LeftArea";
 const FName FWeaponAssetEditor::DetailTabId = "Details";
 
 TSharedPtr<FWeaponAssetEditor> FWeaponAssetEditor::Instance = nullptr;
@@ -15,17 +15,17 @@ void FWeaponAssetEditor::OpenWindow(FString InAssetName)
 {
 	if (Instance.IsValid())
 	{
-		if (Instance->ListView.IsValid())
+		if (Instance->LeftArea.IsValid())
 		{
 			FWeaponRowDataPtr ptr = nullptr;
 
 			if (InAssetName.Len() > 0)
-				ptr = Instance->ListView->GetRowDataPtrByName(InAssetName);
+				ptr = Instance->LeftArea->GetRowDataPtrByName(InAssetName);
 
 			if (ptr == nullptr)
-				ptr = Instance->ListView->GetFirstDataPtr();
+				ptr = Instance->LeftArea->GetFirstDataPtr();
 
-			Instance->ListView->SelectDataPtr(ptr->Asset);
+			Instance->LeftArea->SelectDataPtr(ptr->Asset);
 
 			return;
 		}
@@ -53,7 +53,7 @@ void FWeaponAssetEditor::Shutdown()
 
 void FWeaponAssetEditor::Open(FString InAssetName)
 {
-	ListView = SNew(SWeaponListView)
+	LeftArea = SNew(SWeaponLeftArea)
 		.OnListViewSelectedItem(this, &FWeaponAssetEditor::OnListViewSelectedItem);
 
 	
@@ -85,7 +85,7 @@ void FWeaponAssetEditor::Open(FString InAssetName)
 			(
 				FTabManager::NewStack()
 				->SetSizeCoefficient(0.175f)
-				->AddTab(ListViewTabId, ETabState::OpenedTab)
+				->AddTab(LeftAreaTabId, ETabState::OpenedTab)
 				->SetHideTabWell(true)
 			)
 			->Split
@@ -104,25 +104,25 @@ void FWeaponAssetEditor::Open(FString InAssetName)
 	UCWeaponAsset* asset = nullptr;
 	if (InAssetName.Len() > 0)
 	{
-		FWeaponRowDataPtr ptr = ListView->GetRowDataPtrByName(InAssetName);
+		FWeaponRowDataPtr ptr = LeftArea->GetRowDataPtrByName(InAssetName);
 
-		if (ListView->SelectedRowDataPtrName() == InAssetName)
+		if (LeftArea->SelectedRowDataPtrName() == InAssetName)
 			return;
 
 		if (ptr.IsValid() == false)
-			asset = ListView->GetFirstDataPtr()->Asset;
+			asset = LeftArea->GetFirstDataPtr()->Asset;
 		else
 			asset = ptr->Asset;
 	}
 	else
 	{
-		asset = ListView->GetFirstDataPtr()->Asset;
+		asset = LeftArea->GetFirstDataPtr()->Asset;
 	}
 
 	FAssetEditorToolkit::InitAssetEditor(EToolkitMode::Standalone, TSharedPtr<IToolkitHost>(), EditorName, layout, false, true, asset);
 
 	//DetailsView->SetObject(asset);
-	ListView->SelectDataPtr(asset);
+	LeftArea->SelectDataPtr(asset);
 }
 
 bool FWeaponAssetEditor::OnRequestClose()
@@ -133,8 +133,8 @@ bool FWeaponAssetEditor::OnRequestClose()
 			GEditor->GetEditorSubsystem<UAssetEditorSubsystem>()->NotifyAssetClosed(GetEditingObject(), this);
 	}
 
-	if (ListView.IsValid())
-		ListView.Reset();
+	if (LeftArea.IsValid())
+		LeftArea.Reset();
 
 	if (DetailsView.IsValid())
 		DetailsView.Reset();
@@ -147,9 +147,9 @@ void FWeaponAssetEditor::RegisterTabSpawners(const TSharedRef<FTabManager>& InTa
 	FAssetEditorToolkit::RegisterTabSpawners(InTabManager);
 
 	FOnSpawnTab tab;
-	tab.BindSP(this, &FWeaponAssetEditor::Spawn_ListViewTab);
+	tab.BindSP(this, &FWeaponAssetEditor::Spawn_LeftAreaTab);
 
-	TabManager->RegisterTabSpawner(ListViewTabId, tab);
+	TabManager->RegisterTabSpawner(LeftAreaTabId, tab);
 
 	
 	FOnSpawnTab tab2;
@@ -158,11 +158,11 @@ void FWeaponAssetEditor::RegisterTabSpawners(const TSharedRef<FTabManager>& InTa
 	TabManager->RegisterTabSpawner(DetailTabId, tab2);
 }
 
-TSharedRef<SDockTab> FWeaponAssetEditor::Spawn_ListViewTab(const FSpawnTabArgs& InArgs)
+TSharedRef<SDockTab> FWeaponAssetEditor::Spawn_LeftAreaTab(const FSpawnTabArgs& InArgs)
 {
 	return SNew(SDockTab)
 	[
-		ListView.ToSharedRef()
+		LeftArea.ToSharedRef()
 	];
 }
 

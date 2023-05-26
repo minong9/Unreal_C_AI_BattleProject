@@ -17,6 +17,9 @@ private:
 	TSharedRef<SWidget> DrawCheckBox(int32 InIndex);
 
 public:
+	static bool CanDraw(TSharedRef<IPropertyHandle> InHandle, int InCount);
+
+public:
 	void CheckDefaultObject(int32 InIndex, UObject* InValue); //UObject
 	void CheckDefaultValue(int32 InIndex, float InValue);
 	void CheckDefaultValue(int32 InIndex, bool InValue);

@@ -140,3 +140,15 @@ void SWeaponCheckBoxes::CheckDefaultValue(int32 InIndex, const FVector & InValue
 	if (InValue != val)
 		InternalDatas[InIndex].bChecked = true;
 }
+
+bool SWeaponCheckBoxes::CanDraw(TSharedRef<IPropertyHandle> InHandle, int InCount)
+{
+	bool bCheck = true;
+	bCheck &= InCount > 0;
+
+	int32 index = InHandle->GetIndexInArray();
+	bCheck &= index >= 0;
+	bCheck &= index < InCount;
+
+	return bCheck;
+}

@@ -23,6 +23,12 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Capture")
 		float Exponent = 1;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Capture")
+		FVector Scale = FVector::OneVector;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Capture")
+		FVector ScaleAmount = FVector::ZeroVector;
+
 private:
 	UPROPERTY(VisibleDefaultsOnly)
 		class UPoseableMeshComponent* Mesh;

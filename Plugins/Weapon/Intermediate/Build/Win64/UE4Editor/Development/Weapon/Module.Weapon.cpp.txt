@@ -54,8 +54,8 @@ C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\Sound/S
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\AudioPlatformConfiguration\Public\AudioCompressionSettings.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\AudioPlatformConfiguration\AudioCompressionSettings.generated.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\SoundWave.generated.h
-C:/Users/yuki/Desktop/U2206_06 (1)/Plugins/Weapon/Source/Weapon/SWeaponListView.cpp
-C:\Users\yuki\Desktop\U2206_06 (1)\Plugins\Weapon\Source\Weapon\SWeaponListView.h
+C:/Users/yuki/Desktop/U2206_06 (1)/Plugins/Weapon/Source/Weapon/SWeaponLeftArea.cpp
+C:\Users\yuki\Desktop\U2206_06 (1)\Plugins\Weapon\Source\Weapon\SWeaponLeftArea.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Public\EngineUtils.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Core\Public\ProfilingDebugging/ProfilingHelpers.h
 C:\Program Files\Epic Games\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/WorldSettings.h

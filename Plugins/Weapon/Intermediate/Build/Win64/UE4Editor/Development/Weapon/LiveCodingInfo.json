@@ -7,7 +7,7 @@
 			"SHitData.cpp.obj",
 			"SWeaponCheckBoxes.cpp.obj",
 			"SWeaponDetailsView.cpp.obj",
-			"SWeaponListView.cpp.obj",
+			"SWeaponLeftArea.cpp.obj",
 			"WeaponAssetEditor.cpp.obj",
 			"WeaponAssetFactory.cpp.obj",
 			"WeaponCommand.cpp.obj",

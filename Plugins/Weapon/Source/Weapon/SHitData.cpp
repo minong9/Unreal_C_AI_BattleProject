@@ -34,7 +34,7 @@ void SHitData::EmptyCheckBoxes()
 
 void SHitData::CustomizeHeader(TSharedRef<IPropertyHandle> InPropertyHandle, FDetailWidgetRow& InHeaderRow, IPropertyTypeCustomizationUtils& InCustomizationUtils)
 {
-	if (CheckBoxes.Num() > 0)
+	if (SWeaponCheckBoxes::CanDraw(InPropertyHandle, CheckBoxes.Num()))
 	{
 		int32 index = InPropertyHandle->GetIndexInArray();
 		CheckBoxes[index]->SetUtilities(InCustomizationUtils.GetPropertyUtilities());
@@ -80,7 +80,7 @@ void SHitData::CustomizeHeader(TSharedRef<IPropertyHandle> InPropertyHandle, FDe
 
 void SHitData::CustomizeChildren(TSharedRef<IPropertyHandle> InPropertyHandle, IDetailChildrenBuilder& InChildBuilder, IPropertyTypeCustomizationUtils& InuCustomizationUtils)
 {
-	if (CheckBoxes.Num() > 0)
+	if (SWeaponCheckBoxes::CanDraw(InPropertyHandle, CheckBoxes.Num()))
 	{
 		int32 index = InPropertyHandle->GetIndexInArray();
 		CheckBoxes[index]->DrawProperties(InPropertyHandle, &InChildBuilder);

@@ -23,7 +23,7 @@ public:
 	virtual void RegisterTabSpawners(const TSharedRef<FTabManager>& InTabManager) override;
 
 private:
-	TSharedRef<SDockTab> Spawn_ListViewTab(const FSpawnTabArgs& InArgs);
+	TSharedRef<SDockTab> Spawn_LeftAreaTab(const FSpawnTabArgs& InArgs);
 	TSharedRef<SDockTab> Spawn_DetailsViewTab(const FSpawnTabArgs& InArgs);
 
 private:
@@ -36,11 +36,11 @@ public:
 	virtual FLinearColor GetWorldCentricTabColorScale() const override;
 
 private:
-	TSharedPtr<class SWeaponListView> ListView;
+	TSharedPtr<class SWeaponLeftArea> LeftArea;
 	TSharedPtr<class IDetailsView> DetailsView;
 
 private:
 	static const FName EditorName;
-	static const FName ListViewTabId;
+	static const FName LeftAreaTabId;
 	static const FName DetailTabId;
 };

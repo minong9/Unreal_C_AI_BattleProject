@@ -4,7 +4,7 @@
 #include "C:/Users/yuki/Desktop/U2206_06 (1)/Plugins/Weapon/Source/Weapon/SHitData.cpp"
 #include "C:/Users/yuki/Desktop/U2206_06 (1)/Plugins/Weapon/Source/Weapon/SWeaponCheckBoxes.cpp"
 #include "C:/Users/yuki/Desktop/U2206_06 (1)/Plugins/Weapon/Source/Weapon/SWeaponDetailsView.cpp"
-#include "C:/Users/yuki/Desktop/U2206_06 (1)/Plugins/Weapon/Source/Weapon/SWeaponListView.cpp"
+#include "C:/Users/yuki/Desktop/U2206_06 (1)/Plugins/Weapon/Source/Weapon/SWeaponLeftArea.cpp"
 #include "C:/Users/yuki/Desktop/U2206_06 (1)/Plugins/Weapon/Source/Weapon/WeaponAssetEditor.cpp"
 #include "C:/Users/yuki/Desktop/U2206_06 (1)/Plugins/Weapon/Source/Weapon/WeaponAssetFactory.cpp"
 #include "C:/Users/yuki/Desktop/U2206_06 (1)/Plugins/Weapon/Source/Weapon/WeaponCommand.cpp"

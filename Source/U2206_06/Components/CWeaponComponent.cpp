@@ -62,7 +62,8 @@ void UCWeaponComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	
+	if (!!GetSubAction())
+		GetSubAction()->Tick(DeltaTime);
 }
 
 bool UCWeaponComponent::IsIdleMode()

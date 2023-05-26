@@ -18,15 +18,17 @@ void ACGhostTrail::BeginPlay()
 	UMaterialInstanceConstant* material;
 	CHelpers::GetAssetDynamic<UMaterialInstanceConstant>(&material, "MaterialInstanceConstant'/Game/Materials/M_GhostTrail_Inst.M_GhostTrail_Inst'");
 
-	Material = UMaterialInstanceDynamic::Create(material, this);
-	Material->SetVectorParameterValue("Color", Color);
-	Material->SetScalarParameterValue("Exponent", Exponent);
+	//고스트트레일 할당
+	Material = UMaterialInstanceDynamic::Create(material, this);	
+	Material->SetVectorParameterValue("Color", Color);					//컬러
+	Material->SetScalarParameterValue("Exponent", Exponent);			//지수
 
 	Owner = Cast<ACharacter>(GetOwner());
 
 	Mesh->SetVisibility(false);
 	Mesh->SetSkeletalMesh(Owner->GetMesh()->SkeletalMesh);
 	Mesh->CopyPoseFromSkeletalComponent(Owner->GetMesh());
+	Mesh->SetRelativeScale3D(Scale);
 
 	for (int32 i = 0; i < Owner->GetMesh()->SkeletalMesh->Materials.Num(); i++)
 		Mesh->SetMaterial(i, Material);
@@ -36,8 +38,9 @@ void ACGhostTrail::BeginPlay()
 		if (Mesh->IsVisible() == false)
 			Mesh->ToggleVisibility();
 
+		//보정값
 		float height = Owner->GetCapsuleComponent()->GetScaledCapsuleHalfHeight();
-		SetActorLocation(Owner->GetActorLocation() - FVector(0, 0, height));
+		SetActorLocation(Owner->GetActorLocation() - FVector(ScaleAmount.X, ScaleAmount.Y, height - ScaleAmount.Z));
 		SetActorRotation(Owner->GetActorRotation() + FRotator(0, -90, 0));
 
 		//포즈를 복사함
