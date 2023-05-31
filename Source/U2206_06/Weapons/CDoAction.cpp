@@ -26,6 +26,8 @@ void UCDoAction::BeginPlay(ACAttachment * InAttachment, UCEquipment * InEquipmen
 void UCDoAction::DoAction()
 {
 	State->SetActionMode();
+	bInAction = true;
+
 }
 
 void UCDoAction::Begin_DoAction()
@@ -36,6 +38,7 @@ void UCDoAction::Begin_DoAction()
 void UCDoAction::End_DoAction()
 {
 	bBeginAction = false;
+	bInAction = false;
 
 	State->SetIdleMode();
 	Movement->Move();
