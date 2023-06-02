@@ -54,6 +54,9 @@ void UCMovementComponent::OnMoveForward(float InAxis)
 	FRotator rotator = FRotator(0, OwnerCharacter->GetControlRotation().Yaw, 0);
 	FVector direction = FQuat(rotator).GetForwardVector();
 
+	if (bTopViewCamera == true)
+		direction = FVector::XAxisVector;
+
 	OwnerCharacter->AddMovementInput(direction, InAxis);
 }
 
@@ -63,6 +66,9 @@ void UCMovementComponent::OnMoveRight(float InAxis)
 
 	FRotator rotator = FRotator(0, OwnerCharacter->GetControlRotation().Yaw, 0);
 	FVector direction = FQuat(rotator).GetRightVector();
+
+	if (bTopViewCamera == true)
+		direction = FVector::YAxisVector;
 
 	OwnerCharacter->AddMovementInput(direction, InAxis);
 }
