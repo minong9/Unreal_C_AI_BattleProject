@@ -10,6 +10,7 @@
 #include "Animation/AnimMontage.h"
 
 #include "Particles/ParticleSystem.h"
+#include "NiagaraSystem.h"
 #include "Sound/SoundWave.h"
 
 bool SWeaponDetailsView::RefreshByCheckBoxes = false;

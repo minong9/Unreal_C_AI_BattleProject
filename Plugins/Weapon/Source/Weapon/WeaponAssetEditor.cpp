@@ -1,4 +1,8 @@
 #include "WeaponAssetEditor.h"
+
+#include "SDoActionData.h"
+#include "SEquipmentData.h"
+#include "SHitData.h"
 #include "Weapons/CWeaponAsset.h"
 #include "SWeaponLeftArea.h"
 #include "SWeaponDetailsView.h"
@@ -59,12 +63,22 @@ void FWeaponAssetEditor::Open(FString InAssetName)
 	
 	FPropertyEditorModule& prop = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
 
-	FDetailsViewArgs args(false, false, true, FDetailsViewArgs::ObjectsUseNameArea);
-	args.ViewIdentifier = "WeaponAssetEditorDetailsView";
-	DetailsView = prop.CreateDetailView(args);
+	//DetatilsView Customization
+	{
+		FDetailsViewArgs args(false, false, true, FDetailsViewArgs::ObjectsUseNameArea);
+		args.ViewIdentifier = "WeaponAssetEditorDetailsView";
+		DetailsView = prop.CreateDetailView(args);
 
-	FOnGetDetailCustomizationInstance detailsView = FOnGetDetailCustomizationInstance::CreateStatic(&SWeaponDetailsView::MakeInstance);
-	DetailsView->SetGenericLayoutDetailsDelegate(detailsView);
+		FOnGetDetailCustomizationInstance detailsView = FOnGetDetailCustomizationInstance::CreateStatic(&SWeaponDetailsView::MakeInstance);
+		DetailsView->SetGenericLayoutDetailsDelegate(detailsView);
+	}
+
+	//PropertyType Customization
+	{
+		prop.RegisterCustomPropertyTypeLayout("EquipmentData", FOnGetPropertyTypeCustomizationInstance::CreateStatic(&SEquipmentData::MakeInstance));
+		prop.RegisterCustomPropertyTypeLayout("DoActionData", FOnGetPropertyTypeCustomizationInstance::CreateStatic(&SDoActionData::MakeInstance));
+		prop.RegisterCustomPropertyTypeLayout("HitData", FOnGetPropertyTypeCustomizationInstance::CreateStatic(&SHitData::MakeInstance));
+	}
 
 
 
@@ -131,6 +145,14 @@ bool FWeaponAssetEditor::OnRequestClose()
 	{
 		if (!!GEditor && !!GEditor->GetEditorSubsystem<UAssetEditorSubsystem>())
 			GEditor->GetEditorSubsystem<UAssetEditorSubsystem>()->NotifyAssetClosed(GetEditingObject(), this);
+
+		if (FModuleManager::Get().IsModuleLoaded("PropertyEditor"))
+		{
+			FPropertyEditorModule& prop = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
+			prop.UnregisterCustomPropertyTypeLayout("EquipmentData");
+			prop.UnregisterCustomPropertyTypeLayout("DoActionData");
+			prop.UnregisterCustomPropertyTypeLayout("HitData");
+		}
 	}
 
 	if (LeftArea.IsValid())

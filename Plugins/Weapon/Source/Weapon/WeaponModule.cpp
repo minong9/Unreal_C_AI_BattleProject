@@ -29,9 +29,7 @@ void FWeaponModule::StartupModule()
 
 
 	FPropertyEditorModule& prop = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
-	prop.RegisterCustomPropertyTypeLayout("EquipmentData", FOnGetPropertyTypeCustomizationInstance::CreateStatic(&SEquipmentData::MakeInstance));
-	prop.RegisterCustomPropertyTypeLayout("DoActionData", FOnGetPropertyTypeCustomizationInstance::CreateStatic(&SDoActionData::MakeInstance));
-	prop.RegisterCustomPropertyTypeLayout("HitData", FOnGetPropertyTypeCustomizationInstance::CreateStatic(&SHitData::MakeInstance));
+	
 }
 
 void FWeaponModule::ShutdownModule()
@@ -41,14 +39,6 @@ void FWeaponModule::ShutdownModule()
 
 	if (ContextMenu.IsValid())
 		ContextMenu.Reset();
-
-	if (FModuleManager::Get().IsModuleLoaded("PropertyEditor"))
-	{
-		FPropertyEditorModule& prop = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
-		prop.UnregisterCustomPropertyTypeLayout("EquipmentData");
-		prop.UnregisterCustomPropertyTypeLayout("DoActionData");
-		prop.UnregisterCustomPropertyTypeLayout("HitData");
-	}
 
 	FWeaponStyle::Shutdown();
 }
