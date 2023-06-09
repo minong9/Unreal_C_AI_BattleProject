@@ -59,5 +59,4 @@ private:
 
 	TArray<ACharacter*> Hitted;
 	FTimerHandle TimerHandle;
-
 };
