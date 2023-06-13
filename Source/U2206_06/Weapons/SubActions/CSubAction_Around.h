@@ -5,10 +5,17 @@
 #include "Weapons/CWeaponStructures.h"
 #include "CSubAction_Around.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class U2206_06_API UCSubAction_Around : public UCSubAction
 {
 	GENERATED_BODY()
+
+private:
+	UPROPERTY(EditDefaultsOnly, Category = "FallObject")
+		TSubclassOf<class ACThornObject> ObjectClass;
+
+	UPROPERTY(EditDefaultsOnly, Category = "FallObject")
+		FVector ObjectLocation;
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Action")
